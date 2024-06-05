@@ -44,24 +44,20 @@ protected:
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
 
-#if 1
+
     CodeEditor *edit = new CodeEditor(this);
-    edit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    //edit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setCentralWidget(edit);
     /*auto clockWidget = new ClockWidget();
     clockWidget->setObjectName(QStringLiteral("clock-widget"));
     clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setCentralWidget(clockWidget);*/
-#else
-    auto webView = new QWebEngineView();
-    webView->load(QUrl("https://www.baidu.com"));
-    setCentralWidget(webView);
-#endif
+
 
     loadStyleSheet(Light);
 
     setWindowTitle(tr("Next"));
-    resize(1024, 960);
+    resize(860, 640);
 
     // setFixedHeight(600);
     // windowAgent->centralize();
