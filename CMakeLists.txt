@@ -69,6 +69,9 @@ endif()
 set(QWINDOWKIT_VERSION ${PROJECT_VERSION})
 set(QWINDOWKIT_INSTALL_NAME ${PROJECT_NAME})
 
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+    set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+
 # ----------------------------------
 # Find basic dependencies
 # ----------------------------------
