@@ -7,6 +7,8 @@
 
 #include <QtWidgets/QMainWindow>
 
+#include "CodeEditor.h"
+
 namespace QWK {
     class WidgetWindowAgent;
     class StyleAgent;
@@ -39,6 +41,8 @@ private:
     Theme currentTheme{};
 
     QWK::WidgetWindowAgent *windowAgent;
+
+    CodeEditor* pedit{ nullptr };
 };
 
 #endif // MAINWINDOW_H

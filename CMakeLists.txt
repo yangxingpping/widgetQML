@@ -77,6 +77,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 # ----------------------------------
 find_package(qmsetup QUIET)
 
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets QuickWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets QuickWidgets)
+
 if(NOT TARGET qmsetup::library)
     # Modify this variable according to your project structure
     set(_source_dir ${CMAKE_CURRENT_SOURCE_DIR}/qmsetup)

@@ -27,6 +27,9 @@ public:
 
     void openFile(const QString &fileName);
 
+signals:
+    void sig1(int i);
+
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;

@@ -13,6 +13,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QStyle>
 #include <QtWidgets/QPushButton>
+#include <QQuickWidget>
+#include <QQmlContext>
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #  include <QtGui/QActionGroup>
 #else
@@ -45,16 +47,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
 
 
-    CodeEditor *edit = new CodeEditor(this);
-    //edit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setCentralWidget(edit);
-    /*auto clockWidget = new ClockWidget();
-    clockWidget->setObjectName(QStringLiteral("clock-widget"));
-    clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setCentralWidget(clockWidget);*/
+    pedit = new CodeEditor(this);
+    pedit->setVisible(false);
 
+    auto ww = new QQuickWidget(this);
+
+    ww->rootContext()->setContextProperty("abc", pedit);
+
+    QUrl source("qrc:/rotatingsquare.qml");
+    ww->setSource(source);
+    setCentralWidget(ww);
+
+    
 
     loadStyleSheet(Light);
+
+    emit pedit->sig1(22);
 
     setWindowTitle(tr("Next"));
     resize(860, 640);
