@@ -58,9 +58,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     setCentralWidget(webView);
 #endif
 
-    loadStyleSheet(Dark);
+    loadStyleSheet(Light);
 
-    setWindowTitle(tr("Example MainWindow"));
+    setWindowTitle(tr("Next"));
     resize(1024, 960);
 
     // setFixedHeight(600);
