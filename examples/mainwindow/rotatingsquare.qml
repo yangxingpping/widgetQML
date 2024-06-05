@@ -16,17 +16,18 @@ Item {
         target: abc
         function onSig1(v){
             console.log("pass para=%1".arg(v));
+            hehe.width = v * 10;
         }
     }
     
     Rectangle{
+        id: hehe
+        //anchors.fill: parent
         
-        anchors.fill: parent
-        
-        // x: 0
-        // y: 0
-        // width: 500
-        // height: 400
+        x: 0
+        y: 0
+        width: 500
+        height: 400
         color: "yellow"
     }
     Text {
