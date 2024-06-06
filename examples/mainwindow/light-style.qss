@@ -1,7 +1,7 @@
 /* Window bar */
 
 QWK--WindowBar[bar-active=true] {
-    background-color: #195ABE;
+    background-color: rgba(55, 82, 120, 0.3);
 }
 
 QWK--WindowBar[bar-active=false] {

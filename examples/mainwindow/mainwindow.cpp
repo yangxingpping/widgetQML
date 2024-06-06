@@ -189,7 +189,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 {
     if (!isMaximized()) //forbidden resize by move mouse
     {
-        resize(860, 640);
+        resize(1024, 768);
         event->ignore();
         return;
     }
@@ -353,18 +353,18 @@ void MainWindow::installWindowAgent() {
     auto windowBar = new QWK::WindowBar();
     //windowBar->setFixedHeight(24);
 #ifndef Q_OS_MAC
-    windowBar->setIconButton(iconButton);
+    //windowBar->setIconButton(iconButton);
     windowBar->setMinButton(minButton);
     windowBar->setMaxButton(maxButton);
     windowBar->setCloseButton(closeButton);
 #endif
-    windowBar->setMenuBar(menuBar);
+    //windowBar->setMenuBar(menuBar);
     windowBar->setTitleLabel(titleLabel);
     windowBar->setHostWidget(this);
 
     windowAgent->setTitleBar(windowBar);
 #ifndef Q_OS_MAC
-    windowAgent->setSystemButton(QWK::WindowAgentBase::WindowIcon, iconButton);
+    //windowAgent->setSystemButton(QWK::WindowAgentBase::WindowIcon, iconButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Minimize, minButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Maximize, maxButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Close, closeButton);
