@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 import QtQuick
+import "./global"
 
 Item {
     id: root
@@ -14,13 +15,12 @@ Item {
     width: 600
     Rectangle{
         id: hehe
-        //anchors.fill: parent
-        
         x: 0
         y: 0
         width: root.width
         height: 400
-        color: "red"
+        color: "#375278"
+        opacity: 0.1
     }
     Text {
         id: text
