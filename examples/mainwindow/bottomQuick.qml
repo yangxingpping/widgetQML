@@ -3,7 +3,7 @@
 
 import QtQuick
 
-Item {
+Rectangle {
     id: root
     
     Component.onCompleted:{
@@ -11,8 +11,8 @@ Item {
         console.log("width:%1 height:%2".arg(width).arg(height))
         
     }
-    width: 600
-
+    //width: 600
+    color: "yellow"
     Text {
         id: text
         anchors.centerIn: parent

@@ -97,6 +97,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     rootLayout->addWidget(rightQuick, 1, 1, 1, 1);
     rootLayout->addWidget(bottomQuick, 2, 0, 1, 2);
 
+    QWidget* pp = new QWidget(this);
+    pp->setMinimumHeight(30);
+    rootLayout->addWidget(pp, 3, 0, 1, 2);
+
     rootLayout->setSpacing(1);
 
     loadStyleSheet(Light);
