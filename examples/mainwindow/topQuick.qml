@@ -19,7 +19,7 @@ Item {
         y: 0
         width: root.width
         height: 400
-        color: CusConfig.backDeepBaseColor
+        color: gconf.backDeepBaseColor
         opacity: 0.1
     }
     Text {

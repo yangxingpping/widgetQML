@@ -46,20 +46,23 @@ protected:
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
-    //use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
+    gconf = new CusConfig(this);
+    // use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
     auto root = new QWidget(this);
     root->setContentsMargins(0, 0, 0, 0);
     setCentralWidget(root);
     {
         topQuick = new QQuickWidget(this);
+        topQuick->rootContext()->setContextProperty(qgconf, gconf);
         QUrl source1("qrc:/topQuick.qml");
         topQuick->setSource(source1);
         topQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
         topQuick->setMinimumHeight(44);
     }
-    
+
     {
         rightQuick = new QQuickWidget(this);
+        rightQuick->rootContext()->setContextProperty(qgconf, gconf);
         QUrl source1("qrc:/rightQuick.qml");
         rightQuick->setSource(source1);
         rightQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -68,6 +71,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     {
         bottomQuick = new QQuickWidget(this);
+        bottomQuick->rootContext()->setContextProperty(qgconf, gconf);
         QUrl source1("qrc:/bottomQuick.qml");
         bottomQuick->setSource(source1);
         bottomQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -81,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     {
         QUrl source("qrc:/contentQuick.qml");
+        contentQuick->rootContext()->setContextProperty(qgconf, gconf);
         contentQuick->setSource(source);
         contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
     }
@@ -98,19 +103,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     rootLayout->addWidget(bottomQuick, 2, 0, 1, 2);
 
 #ifdef Q_OS_WIN
-    QWidget* pp = new QWidget(this);
+    QWidget *pp = new QWidget(this);
     pp->setMinimumHeight(30);
     rootLayout->addWidget(pp, 3, 0, 1, 2);
 #endif
     rootLayout->setSpacing(1);
 
     loadStyleSheet(Light);
-    //emit pedit->sig1(5);
+    // emit pedit->sig1(5);
 
-    //setWindowTitle(tr("Next"));
+    // setWindowTitle(tr("Next"));
     resize(860, 640);
-    //setMinimumSize(860, 640);
-    //setMaximumSize(maximumSize());
+    // setMinimumSize(860, 640);
+    // setMaximumSize(maximumSize());
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -185,16 +190,14 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     event->accept();
 }
 
-void MainWindow::resizeEvent(QResizeEvent* event)
-{
-    if (!isMaximized()) //forbidden resize by move mouse
+void MainWindow::resizeEvent(QResizeEvent *event) {
+    if (!isMaximized()) // forbidden resize by move mouse
     {
         resize(1024, 768);
         event->ignore();
         return;
     }
     QMainWindow::resizeEvent(event);
-
 }
 
 void MainWindow::installWindowAgent() {
@@ -306,7 +309,7 @@ void MainWindow::installWindowAgent() {
 
         // Real menu
         auto settings = new QMenu(tr("S1"), menuBar);
-        
+
 
 #ifdef Q_OS_WIN
 #elif defined(Q_OS_MAC)
@@ -351,20 +354,20 @@ void MainWindow::installWindowAgent() {
 #endif
 
     auto windowBar = new QWK::WindowBar();
-    //windowBar->setFixedHeight(24);
+    // windowBar->setFixedHeight(24);
 #ifndef Q_OS_MAC
-    //windowBar->setIconButton(iconButton);
+    // windowBar->setIconButton(iconButton);
     windowBar->setMinButton(minButton);
     windowBar->setMaxButton(maxButton);
     windowBar->setCloseButton(closeButton);
 #endif
-    //windowBar->setMenuBar(menuBar);
+    // windowBar->setMenuBar(menuBar);
     windowBar->setTitleLabel(titleLabel);
     windowBar->setHostWidget(this);
 
     windowAgent->setTitleBar(windowBar);
 #ifndef Q_OS_MAC
-    //windowAgent->setSystemButton(QWK::WindowAgentBase::WindowIcon, iconButton);
+    // windowAgent->setSystemButton(QWK::WindowAgentBase::WindowIcon, iconButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Minimize, minButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Maximize, maxButton);
     windowAgent->setSystemButton(QWK::WindowAgentBase::Close, closeButton);

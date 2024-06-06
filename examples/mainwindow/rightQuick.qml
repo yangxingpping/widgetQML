@@ -11,7 +11,7 @@ Item {
     width: 86
     Rectangle{
         anchors.fill: parent
-        color: "#375278"
+        color: gconf.backDeepBaseColor
         opacity: 0.3
     }
     Text {

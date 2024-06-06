@@ -10,6 +10,7 @@
 #include <QQuickWidget>
 
 #include "codeeditor.h"
+#include "CusConfig.h"
 
 namespace QWK {
     class WidgetWindowAgent;
@@ -36,7 +37,7 @@ protected:
 
     void closeEvent(QCloseEvent *event) override;
 
-    void resizeEvent(QResizeEvent* event) override;
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     void installWindowAgent();
@@ -46,12 +47,14 @@ private:
 
     QWK::WidgetWindowAgent *windowAgent;
 
-    CodeEditor* pedit{ nullptr };
-    QGridLayout* rootLayout{ nullptr };
-    QQuickWidget* contentQuick{ nullptr };
-    QQuickWidget* topQuick{ nullptr };
-    QQuickWidget* rightQuick{ nullptr };
-    QQuickWidget* bottomQuick{ nullptr };
+    CodeEditor *pedit{nullptr};
+    QGridLayout *rootLayout{nullptr};
+    QQuickWidget *contentQuick{nullptr};
+    QQuickWidget *topQuick{nullptr};
+    QQuickWidget *rightQuick{nullptr};
+    QQuickWidget *bottomQuick{nullptr};
+    CusConfig *gconf{nullptr};
+    QString qgconf{"gconf"};
 };
 
 #endif // MAINWINDOW_H
