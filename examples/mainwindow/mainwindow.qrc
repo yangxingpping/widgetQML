@@ -3,5 +3,6 @@
         <file>dark-style.qss</file>
         <file>light-style.qss</file>
         <file>rotatingsquare.qml</file>
+        <file>topQuick.qml</file>
     </qresource>
 </RCC>

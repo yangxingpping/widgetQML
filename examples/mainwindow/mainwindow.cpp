@@ -52,17 +52,28 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     auto root = new QWidget(this);
     setCentralWidget(root);
 
-    
+
+    topQuick = new QQuickWidget(this);
+    QUrl source1("qrc:/topQuick.qml");
+    topQuick->setSource(source1);
+    topQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    topQuick->setMinimumHeight(44);
 
     contentQuick = new QQuickWidget(this);
     pedit = new CodeEditor(this);
     pedit->setVisible(false);
     contentQuick->rootContext()->setContextProperty("abc", pedit);
+
+    
     QUrl source("qrc:/rotatingsquare.qml");
     contentQuick->setSource(source);
+    contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
 
     rootLayout = new QGridLayout(root);
-    rootLayout->addWidget(contentQuick);
+    rootLayout->setRowStretch(0, 0);
+    rootLayout->setRowStretch(1, 1);
+    rootLayout->addWidget(topQuick, 0, 0);
+    rootLayout->addWidget(contentQuick, 1, 0);
 
     loadStyleSheet(Light);
     emit pedit->sig1(5);
