@@ -45,7 +45,7 @@ protected:
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
-
+    //use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
 
     pedit = new CodeEditor(this);
     pedit->setVisible(false);
