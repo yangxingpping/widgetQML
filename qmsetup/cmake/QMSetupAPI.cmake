@@ -299,7 +299,7 @@ macro(qm_configure_target _target)
         CCFLAGS CCFLAGS_PUBLIC
         LDFLAGS LDFLAGS_PUBLIC
         QT_LINKS QT_LINKS_PRIVATE QT_INCLUDE_PRIVATE
-        SKIP_AUTOMOC
+        SKIP_AUTOMOC  
     )
     cmake_parse_arguments(FUNC "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 

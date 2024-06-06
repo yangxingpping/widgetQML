@@ -1,4 +1,2 @@
-﻿singleton ItemsOriginal 1.0 ItemsOriginal.qml
-singleton ItemsFooter 1.0 ItemsFooter.qml
-singleton Lang 1.0 Lang.qml
+﻿
 singleton CusConfig 1.0 CusConfig.qml

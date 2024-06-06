@@ -2,8 +2,13 @@ project(QWKExample_MainWindow)
 
 file(GLOB _src *.h *.cpp)
 
+set(qml_singletons
+    global/CusConfig.qml
+    global/Lang.qml
+)
+
 qwk_add_example(${PROJECT_NAME}
-    SOURCES ${_src} mainwindow.qrc ../shared/resources/shared.qrc
+    SOURCES ${_src} mainwindow.qrc ../shared/resources/shared.qrc ${qml_singletons}
     QT_LINKS Core Gui Widgets # MultimediaWidgets
     LINKS QWKWidgets WidgetFrame
 )

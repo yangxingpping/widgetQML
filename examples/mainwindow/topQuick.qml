@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 import QtQuick
-import "./global"
+//import "./global"
 
 Item {
     id: root
@@ -19,7 +19,7 @@ Item {
         y: 0
         width: root.width
         height: 400
-        color: "#375278"
+        color: CusConfig.backDeepBaseColor
         opacity: 0.1
     }
     Text {

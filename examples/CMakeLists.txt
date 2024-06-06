@@ -5,7 +5,7 @@ macro(qwk_add_example _target)
     set(CMAKE_AUTOUIC ON)
     set(CMAKE_AUTORCC ON)
 
-    add_executable(${_target})
+    qt6_add_executable(${_target})
     qm_configure_target(${_target} ${ARGN})
     qm_add_win_rc(${_target} ICON ${QWK_EXAMPLES_DIR}/shared/resources/app/example.ico)
     qm_add_win_manifest(${_target})
