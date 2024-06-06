@@ -50,7 +50,7 @@ private:
     QGridLayout* rootLayout{ nullptr };
     QQuickWidget* contentQuick{ nullptr };
     QQuickWidget* topQuick{ nullptr };
-    QQuickWidget* rigthQuick{ nullptr };
+    QQuickWidget* rightQuick{ nullptr };
     QQuickWidget* bottomQuick{ nullptr };
 };
 

@@ -11,18 +11,8 @@ Item {
         console.log("width:%1 height:%2".arg(width).arg(height))
         
     }
-    width: 600
+    width: 86
     
-    Rectangle{
-        id: hehe
-        //anchors.fill: parent
-        
-        x: 0
-        y: 0
-        width: root.width
-        height: 400
-        color: "red"
-    }
     Text {
         id: text
         anchors.centerIn: parent

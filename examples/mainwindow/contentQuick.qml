@@ -20,16 +20,6 @@ Item {
         }
     }
     
-    Rectangle{
-        id: hehe
-        //anchors.fill: parent
-        
-        x: 0
-        y: 0
-        width: root.width
-        height: 400
-        color: "red"
-    }
     Text {
         id: text
         anchors.centerIn: parent
