@@ -107,7 +107,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     loadStyleSheet(Light);
     //emit pedit->sig1(5);
 
-    setWindowTitle(tr("Next"));
+    //setWindowTitle(tr("Next"));
     resize(860, 640);
     //setMinimumSize(860, 640);
     //setMaximumSize(maximumSize());
