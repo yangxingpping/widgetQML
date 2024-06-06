@@ -108,7 +108,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     setWindowTitle(tr("Next"));
     resize(860, 640);
-
+    //setMinimumSize(860, 640);
+    //setMaximumSize(maximumSize());
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -185,6 +186,12 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
+    if (!isMaximized()) //forbidden resize by move mouse
+    {
+        resize(860, 640);
+        event->ignore();
+        return;
+    }
     QMainWindow::resizeEvent(event);
 
 }
