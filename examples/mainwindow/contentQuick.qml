@@ -12,6 +12,14 @@ Item {
         
     }
     width: 600
+    Connections{
+        target: abc
+        function onSig1(v){
+            console.log("pass para=%1".arg(v));
+            root.width = v * 5;
+        }
+    }
+    
     Rectangle{
         id: hehe
         //anchors.fill: parent
@@ -48,6 +56,6 @@ Item {
                     text.api = "Unknown API";
             }
         }
-        text: "Top"
+        text: "Content"
     }
 }

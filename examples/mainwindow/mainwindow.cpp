@@ -52,12 +52,29 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     auto root = new QWidget(this);
     setCentralWidget(root);
 
+    {
+        topQuick = new QQuickWidget(this);
+        QUrl source1("qrc:/topQuick.qml");
+        topQuick->setSource(source1);
+        topQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        topQuick->setMinimumHeight(44);
+    }
+    
+    {
+        rigthQuick = new QQuickWidget(this);
+        QUrl source1("qrc:/rightQuick.qml");
+        rigthQuick->setSource(source1);
+        rigthQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        rigthQuick->setMinimumWidth(86);
+    }
 
-    topQuick = new QQuickWidget(this);
-    QUrl source1("qrc:/topQuick.qml");
-    topQuick->setSource(source1);
-    topQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    topQuick->setMinimumHeight(44);
+    {
+        bottomQuick = new QQuickWidget(this);
+        QUrl source1("qrc:/bottomQuick.qml");
+        bottomQuick->setSource(source1);
+        bottomQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        bottomQuick->setMinimumWidth(62);
+    }
 
     contentQuick = new QQuickWidget(this);
     pedit = new CodeEditor(this);
@@ -65,16 +82,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     contentQuick->rootContext()->setContextProperty("abc", pedit);
 
     
-    QUrl source("qrc:/rotatingsquare.qml");
+    QUrl source("qrc:/contentQuick.qml");
     contentQuick->setSource(source);
     contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
 
     rootLayout = new QGridLayout(root);
     rootLayout->setRowStretch(0, 0);
     rootLayout->setRowStretch(1, 1);
-    rootLayout->addWidget(topQuick, 0, 0);
+    rootLayout->setRowStretch(2, 0);
+    rootLayout->setColumnStretch(1, 0);
+    rootLayout->addWidget(topQuick, 0, 0, 1, 2);
     rootLayout->addWidget(contentQuick, 1, 0);
-
+    rootLayout->addWidget(rigthQuick, 1, 1);
+    rootLayout->addWidget(bottomQuick, 2, 1, 1, 2);
     loadStyleSheet(Light);
     emit pedit->sig1(5);
 

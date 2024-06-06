@@ -4,5 +4,8 @@
         <file>light-style.qss</file>
         <file>rotatingsquare.qml</file>
         <file>topQuick.qml</file>
+        <file>bottomQuick.qml</file>
+        <file>rightQuick.qml</file>
+        <file>contentQuick.qml</file>
     </qresource>
 </RCC>

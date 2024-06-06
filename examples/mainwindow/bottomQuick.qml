@@ -12,6 +12,7 @@ Item {
         
     }
     width: 600
+    
     Rectangle{
         id: hehe
         //anchors.fill: parent
@@ -48,6 +49,6 @@ Item {
                     text.api = "Unknown API";
             }
         }
-        text: "Top"
+        text: "Bottom" + api
     }
 }

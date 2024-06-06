@@ -12,6 +12,7 @@ Item {
         
     }
     width: 600
+    
     Rectangle{
         id: hehe
         //anchors.fill: parent
@@ -35,7 +36,7 @@ Item {
                 else if (api === GraphicsInfo.OpenGL)
                     text.api = "OpenGL on QRhi";
                 else if (api === GraphicsInfo.Direct3D11)
-                    text.api = "D3D11 on QRhi";
+                    text.api = "right";
                 else if (api === GraphicsInfo.Direct3D12)
                     text.api = "D3D12 on QRhi";
                 else if (api === GraphicsInfo.Vulkan)
@@ -48,6 +49,6 @@ Item {
                     text.api = "Unknown API";
             }
         }
-        text: "Top"
+        text: "Right"
     }
 }
