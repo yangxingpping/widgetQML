@@ -15,6 +15,7 @@
 #include <QtWidgets/QPushButton>
 #include <QQuickWidget>
 #include <QQmlContext>
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #  include <QtGui/QActionGroup>
 #else
@@ -50,16 +51,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     pedit = new CodeEditor(this);
     pedit->setVisible(false);
 
-    auto ww = new QQuickWidget(this);
-
-    ww->rootContext()->setContextProperty("abc", pedit);
-
+    contentQuick = new QQuickWidget(this);
+    contentQuick->rootContext()->setContextProperty("abc", pedit);
     QUrl source("qrc:/rotatingsquare.qml");
-    ww->setSource(source);
-    setCentralWidget(ww);
-
-    
-
+    contentQuick->setSource(source);
+    setCentralWidget(contentQuick);
     loadStyleSheet(Light);
 
     emit pedit->sig1(22);

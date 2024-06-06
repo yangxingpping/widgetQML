@@ -6,6 +6,8 @@
 #define MAINWINDOW_H
 
 #include <QtWidgets/QMainWindow>
+#include <QGridLayout>
+#include <QQuickWidget>
 
 #include "CodeEditor.h"
 
@@ -43,6 +45,11 @@ private:
     QWK::WidgetWindowAgent *windowAgent;
 
     CodeEditor* pedit{ nullptr };
+    QGridLayout* rootLayout{ nullptr };
+    QQuickWidget* contentQuick{ nullptr };
+    QQuickWidget* topQuick{ nullptr };
+    QQuickWidget* rigthQuick{ nullptr };
+    QQuickWidget* bottomQuick{ nullptr };
 };
 
 #endif // MAINWINDOW_H
