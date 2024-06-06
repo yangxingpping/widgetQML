@@ -205,16 +205,11 @@ void MainWindow::installWindowAgent() {
     // 2. Construct your title bar
     auto menuBar = [this]() {
         auto menuBar = new QMenuBar();
-
+        menuBar->setLayoutDirection(Qt::RightToLeft);
         // Virtual menu
-        auto file = new QMenu(tr("File(&F)"), menuBar);
-        file->addAction(new QAction(tr("New(&N)"), menuBar));
-        file->addAction(new QAction(tr("Open(&O)"), menuBar));
-        file->addSeparator();
+        auto file = new QMenu(tr("A1"), menuBar);
 
-        auto edit = new QMenu(tr("Edit(&E)"), menuBar);
-        edit->addAction(new QAction(tr("Undo(&U)"), menuBar));
-        edit->addAction(new QAction(tr("Redo(&R)"), menuBar));
+        auto edit = new QMenu(tr("A2"), menuBar);
 
         // Theme action
         auto darkAction = new QAction(tr("Enable dark theme"), menuBar);
@@ -310,24 +305,21 @@ void MainWindow::installWindowAgent() {
 #endif
 
         // Real menu
-        auto settings = new QMenu(tr("Settings(&S)"), menuBar);
-        settings->addAction(darkAction);
+        auto settings = new QMenu(tr("S1"), menuBar);
+        
 
 #ifdef Q_OS_WIN
-        settings->addSeparator();
-        settings->addAction(dwmBlurAction);
-        settings->addAction(acrylicAction);
-        settings->addAction(micaAction);
-        settings->addAction(micaAltAction);
 #elif defined(Q_OS_MAC)
         settings->addAction(darkBlurAction);
         settings->addAction(lightBlurAction);
         settings->addAction(noBlurAction);
 #endif
-
+        auto settingss = new QMenu(tr("S2"), menuBar);
         menuBar->addMenu(file);
         menuBar->addMenu(edit);
         menuBar->addMenu(settings);
+        menuBar->addMenu(settingss);
+
         return menuBar;
     }();
     menuBar->setObjectName(QStringLiteral("win-menu-bar"));
@@ -359,6 +351,7 @@ void MainWindow::installWindowAgent() {
 #endif
 
     auto windowBar = new QWK::WindowBar();
+    //windowBar->setFixedHeight(24);
 #ifndef Q_OS_MAC
     windowBar->setIconButton(iconButton);
     windowBar->setMinButton(minButton);
