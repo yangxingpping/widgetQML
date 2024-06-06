@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     auto root = new QWidget(this);
     setCentralWidget(root);
 
-    rootLayout = new QGridLayout(root);
+    
 
     contentQuick = new QQuickWidget(this);
     pedit = new CodeEditor(this);
@@ -61,12 +61,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QUrl source("qrc:/rotatingsquare.qml");
     contentQuick->setSource(source);
 
+    rootLayout = new QGridLayout(root);
     rootLayout->addWidget(contentQuick);
-    
+
     loadStyleSheet(Light);
-
-
-    
     emit pedit->sig1(5);
 
     setWindowTitle(tr("Next"));
