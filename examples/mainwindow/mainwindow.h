@@ -9,7 +9,7 @@
 #include <QGridLayout>
 #include <QQuickWidget>
 
-#include "CodeEditor.h"
+#include "codeeditor.h"
 
 namespace QWK {
     class WidgetWindowAgent;
