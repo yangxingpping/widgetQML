@@ -48,23 +48,30 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
     //use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
 
-    pedit = new CodeEditor(this);
-    pedit->setVisible(false);
+    
+    auto root = new QWidget(this);
+    setCentralWidget(root);
+
+    rootLayout = new QGridLayout(root);
 
     contentQuick = new QQuickWidget(this);
+    pedit = new CodeEditor(this);
+    pedit->setVisible(false);
     contentQuick->rootContext()->setContextProperty("abc", pedit);
     QUrl source("qrc:/rotatingsquare.qml");
     contentQuick->setSource(source);
-    setCentralWidget(contentQuick);
+
+    rootLayout->addWidget(contentQuick);
+    
     loadStyleSheet(Light);
 
-    emit pedit->sig1(22);
+
+    
+    emit pedit->sig1(5);
 
     setWindowTitle(tr("Next"));
     resize(860, 640);
 
-    // setFixedHeight(600);
-    // windowAgent->centralize();
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -137,6 +144,12 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     //     QTimer::singleShot(1000, this, &QWidget::show);
     // }
     event->accept();
+}
+
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+    QMainWindow::resizeEvent(event);
+
 }
 
 void MainWindow::installWindowAgent() {

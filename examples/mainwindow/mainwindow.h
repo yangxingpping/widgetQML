@@ -36,6 +36,8 @@ protected:
 
     void closeEvent(QCloseEvent *event) override;
 
+    void resizeEvent(QResizeEvent* event) override;
+
 private:
     void installWindowAgent();
     void loadStyleSheet(Theme theme);

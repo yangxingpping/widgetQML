@@ -11,12 +11,12 @@ Item {
         console.log("width:%1 height:%2".arg(width).arg(height))
         
     }
-
+    width: 600
     Connections{
         target: abc
         function onSig1(v){
             console.log("pass para=%1".arg(v));
-            hehe.width = v * 10;
+            root.width = v * 5;
         }
     }
     
@@ -26,7 +26,7 @@ Item {
         
         x: 0
         y: 0
-        width: 500
+        width: root.width
         height: 400
         color: "yellow"
     }
