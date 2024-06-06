@@ -12,21 +12,12 @@ Item {
         
     }
     width: 600
-    
-    Rectangle{
-        id: hehe
-        //anchors.fill: parent
-        
-        x: 0
-        y: 0
-        width: root.width
-        height: 400
-        color: "red"
-    }
+
     Text {
         id: text
         anchors.centerIn: parent
         property string api
+        verticalAlignment: Text.AlignVCenter
         Connections {
             target: text.GraphicsInfo
             function onApiChanged() {
@@ -49,6 +40,6 @@ Item {
                     text.api = "Unknown API";
             }
         }
-        text: "Bottom" + api
+        text: "Bottom"
     }
 }

@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
     //use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
     auto root = new QWidget(this);
+    root->setContentsMargins(0, 0, 0, 0);
     setCentralWidget(root);
     {
         topQuick = new QQuickWidget(this);
@@ -61,22 +62,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
         rightQuick = new QQuickWidget(this);
         QUrl source1("qrc:/rightQuick.qml");
         rightQuick->setSource(source1);
-        rightQuick->resize(size().width(), 86);
         rightQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
         rightQuick->setMinimumWidth(86);
     }
 
     {
         bottomQuick = new QQuickWidget(this);
-        QUrl source1("qrc:/rightQuick.qml");
+        QUrl source1("qrc:/bottomQuick.qml");
         bottomQuick->setSource(source1);
         bottomQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
-        bottomQuick->setMinimumWidth(62);
+        bottomQuick->setMinimumHeight(62);
     }
 
     contentQuick = new QQuickWidget(this);
     pedit = new CodeEditor(this);
-    pedit->setVisible(false);
+    pedit->setVisible(true);
     contentQuick->rootContext()->setContextProperty("abc", pedit);
 
     {
@@ -85,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
         contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
     }
     rootLayout = new QGridLayout(root);
+    rootLayout->setContentsMargins(0, 0, 0, 0);
     rootLayout->setRowStretch(0, 0);
     rootLayout->setRowStretch(1, 1);
     rootLayout->setRowStretch(2, 0);
@@ -92,9 +93,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     rootLayout->setColumnStretch(1, 0);
 
     rootLayout->addWidget(topQuick, 0, 0, 1, 2);
-    rootLayout->addWidget(contentQuick, 1, 0, 1, 1);
+    rootLayout->addWidget(pedit, 1, 0, 1, 1);
     rootLayout->addWidget(rightQuick, 1, 1, 1, 1);
     rootLayout->addWidget(bottomQuick, 2, 0, 1, 2);
+
+    rootLayout->setSpacing(1);
 
     loadStyleSheet(Light);
     //emit pedit->sig1(5);
