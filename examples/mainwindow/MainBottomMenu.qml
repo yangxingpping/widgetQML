@@ -10,11 +10,9 @@ Rectangle{
     property var bottomPaneNoSelectButtonColor: Qt.rgba(1,1,1,0.6)
     property string btnClickedBackgroundColor: "#6d829d"
     property var btnDefaultBackgroundColor: Qt.rgba(1,1,1,0.0)
-    property int cncModeIndex: 0
-    property int tryCncModeIndex: 0
     property bool debug: true
     anchors.fill: parent
-    color: "transparent"
+    color: "red"
     signal sClickBottomMainMenu(int index, int sub);
     signal sClickBottomDetailMenu(int index, int evalue);
 
@@ -70,7 +68,7 @@ Rectangle{
         id: rectBottomMenuMain
         x: 0
         y: 0
-        color: "transparent"
+        color: "yellow"
         width: parent.width
         height: parent.height
         ButtonGroup{
@@ -116,24 +114,7 @@ Rectangle{
             }
         }
 
-        ListModel {
-            id: detailModel
-            
-            Component.onCompleted: {
-                clear()
-                append({"name": qsTr("Auto"),"iconsource": "Auto"});
-                append({"name": qsTr("Single"),"iconsource": "Single"});
-                append({"name": qsTr("MDI"),"iconsource": "MDI"});
-                append({"name": qsTr("Rapid"),"iconsource": "Rapid"});
-                append({"name": qsTr("Search"),"iconsource": "Search"});
-                append({"name": qsTr("Test"),"iconsource": "Test"});
-                append({"name": qsTr("Manual"),"iconsource": "Manual"});
-                append({"name": qsTr("Home"),"iconsource": "Home"});
-                append({"name": qsTr("Jog"),"iconsource": "Jog"});
-                append({"name": qsTr("NCFunc"),"iconsource": "NCFunc"});
-                append({"name": qsTr("Reset"),"iconsource": "Reset"});
-            }
-        }
+        
 
         ListView {
             id: rowBottomBtns
@@ -196,7 +177,7 @@ Rectangle{
         id: rectBottomMenuDetail
         color: "transparent"
         x: parent.x
-        y: parent.y + rectBottomMenuMain.height
+        y: rectBottomMenuMain.height
         width: parent.width
         height: 0
         ButtonGroup{
@@ -204,7 +185,24 @@ Rectangle{
             exclusive: false
             property int clickedIndex: -1
         }
-
+        ListModel {
+            id: detailModel
+            
+            Component.onCompleted: {
+                clear()
+                append({"name": qsTr("Auto"),"iconsource": "Auto"});
+                append({"name": qsTr("Single"),"iconsource": "Single"});
+                append({"name": qsTr("MDI"),"iconsource": "MDI"});
+                append({"name": qsTr("Rapid"),"iconsource": "Rapid"});
+                append({"name": qsTr("Search"),"iconsource": "Search"});
+                append({"name": qsTr("Test"),"iconsource": "Test"});
+                append({"name": qsTr("Manual"),"iconsource": "Manual"});
+                append({"name": qsTr("Home"),"iconsource": "Home"});
+                append({"name": qsTr("Jog"),"iconsource": "Jog"});
+                append({"name": qsTr("NCFunc"),"iconsource": "NCFunc"});
+                append({"name": qsTr("Reset"),"iconsource": "Reset"});
+            }
+        }
         ListView {
             id: rowBottomDetails
             topMargin: 0
@@ -275,28 +273,31 @@ Rectangle{
 
     AnimationController {
         id: controllerBottom
-        property bool toEnd: true
+        property bool toEnd: false
         animation: ParallelAnimation {
-            id: animBottomMenu
-            property int timemini : 30000
-            NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: 50000; from: r.height; to: 0; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: 50000; from: r.height; to: 0; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: 50000; from: 0; to: r.height; easing.type: Easing.InOutQuad }
+            id: pan
+            property int timemini : 1000
+            NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: pan.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: pan.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: pan.timemini; from: 0; to: r.height; easing.type: Easing.InOutQuad }
             onFinished: {
-                console.log("animation finished")
+                //console.log("animation finished")
             }
+        }
+        onProgressChanged: function(){
+            rectBottomMenuMain.height = (1.0 - progress) * r.height;
+            rectBottomMenuDetail.height = progress * r.height;
         }
     }
 
     function switchBottomMenu(){
-        console.log("call switch to end flag=%1".arg(controllerBottom.toEnd))
+        controllerBottom.toEnd = !controllerBottom.toEnd
         if(controllerBottom.toEnd){
             controllerBottom.completeToEnd();
         }
         else{
-            controllerBottom.completeToBeginning()
+            controllerBottom.completeToBeginning();
         }
-        controllerBottom.toEnd = !controllerBottom.toEnd
     }
 
     Component.onCompleted: {

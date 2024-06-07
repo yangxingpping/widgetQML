@@ -1,5 +1,5 @@
 import QtQuick
-import "./global"
+
 Item {
     id: root
     
@@ -13,8 +13,5 @@ Item {
         anchors.fill: parent
         color: gconf.backDeepBaseColor
         opacity: 0.3
-    }
-    Image{
-        source: "qrc:/res/svg/avatar_1.svg"
     }
 }

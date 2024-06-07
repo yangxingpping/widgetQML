@@ -5,7 +5,6 @@ import QtQuick
 
 Item {
     id: root
-    
     MainBottomPane{
         
         anchors.fill: parent
