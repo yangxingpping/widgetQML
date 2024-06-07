@@ -62,5 +62,6 @@
         <file>res/svg/CncMode/Test.svg</file>
         <file>frame.ui</file>
         <file>ncFuncMenu.qml</file>
+        <file>ZMenu.qml</file>
     </qresource>
 </RCC>
