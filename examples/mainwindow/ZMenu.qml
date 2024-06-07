@@ -38,7 +38,7 @@ Rectangle {
             MouseArea{
                 anchors.fill: parent
                 onClicked: function(){
-                    clickItem(index, name)
+                    clickItem(index, modelData)
                 }
                 hoverEnabled: true
                 onEntered: {

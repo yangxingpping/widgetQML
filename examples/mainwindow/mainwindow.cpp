@@ -165,10 +165,10 @@ void MainWindow::displayNCFunc(QPoint pt)
 {
     QStringList lst{ "M01", "跳段", "设置程序段跳过级别"};
     gconf->ncFuncMenus(lst);
-    popFrame->resize(100, 200);
+    popFrame->resize(120, lst.size() * 20);
     popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
-    popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
+    popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
     popFrame->show();
 }
 
@@ -181,10 +181,10 @@ void MainWindow::displayJoyFunc(QPoint pt)
 {
     QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
     gconf->joyMenus(lst);
-    popFrame->resize(100, 200);
+    popFrame->resize(120, lst.size() * 20);
     popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
-    popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
+    popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
     popFrame->show();
 }
 
