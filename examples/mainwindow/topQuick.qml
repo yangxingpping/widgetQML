@@ -1,25 +1,43 @@
-// Copyright (C) 2017 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
-
 import QtQuick
-//import "./global"
+import QtQuick.Shapes 1.5
 
-Item {
-    id: root
-    
-    Component.onCompleted:{
-        
-        console.log("width:%1 height:%2".arg(width).arg(height))
-        
-    }
-    width: 600
+Rectangle {
+    id: r
+    color: "transparent"
     MainTopPane{
         id: hehe
-        
         anchors.fill: parent
-        
-        //color: gconf.backDeepBaseColor
-        //opacity: 0.1
+        visible: false
     }
-    
+    property int width1: 123
+    property int width2: 145
+    property int sepwidth: 5
+    Shape {
+        ShapePath {
+            id: mainTopLeftRealPanel
+            fillColor: "#e4e8ed"
+            strokeWidth: 2
+            strokeColor: "#e4e8ed"
+            startX: 0; startY: 0
+            PathSvg {
+                id: mainTopLeftRealPanelPath
+                path: "L %1 0 L %2 %3 L 0 %3 z".arg(r.width - r.width1 - r.sepwidth).arg(r.width - r.width2 - r.sepwidth).arg(r.height)
+            }
+        }
+    }
+
+    Shape {
+        ShapePath {
+            id: mainTopRightRealPanel
+            fillColor: "#e4e8ed"
+            strokeWidth: 2
+            strokeColor: "#e4e8ed"
+            startX: r.width - r.width1
+            startY: 0
+            PathSvg {
+                id: mainTopRightRealPanelPath
+                path: "L %1 0 L %1 %2 L %3 %2 z".arg(r.width).arg(r.height).arg(r.width - r.width2)
+            }
+        }
+    }
 }
