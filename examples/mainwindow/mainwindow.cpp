@@ -203,9 +203,9 @@ void MainWindow::uiDisplayRightMenuSub(int index, QPoint pt)
     QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
     gconf->ncFuncMenus(lst);
     popFrame->resize(120, lst.size() * 20);
-    popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
+    popFrame->setSource(QUrl("qrc:/rightPaneMenu.qml"));
     auto rPos = mapToGlobal(rightQuick->geometry().topLeft());
-    popFrame->move(rPos);
+    popFrame->move(rPos.x() - 120, rPos.y() + pt.y() + topQuick->geometry().height());
     popFrame->show();
 }
 

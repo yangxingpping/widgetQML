@@ -64,5 +64,6 @@
         <file>ncFuncMenu.qml</file>
         <file>ZMenu.qml</file>
         <file>ncJoyMenu.qml</file>
+        <file>rightPaneMenu.qml</file>
     </qresource>
 </RCC>
