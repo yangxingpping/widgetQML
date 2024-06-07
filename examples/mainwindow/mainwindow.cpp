@@ -204,8 +204,8 @@ void MainWindow::uiDisplayRightMenuSub(int index, QPoint pt)
     gconf->ncFuncMenus(lst);
     popFrame->resize(120, lst.size() * 20);
     popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
-    auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
-    popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
+    auto rPos = mapToGlobal(rightQuick->geometry().topLeft());
+    popFrame->move(rPos);
     popFrame->show();
 }
 
