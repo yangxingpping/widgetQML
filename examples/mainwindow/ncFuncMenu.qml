@@ -10,38 +10,57 @@ Rectangle {
             name: qsTr("手轮")
         }
         ListElement{
-            text: qsTr("连续给进")
+            name: qsTr("连续给进")
         }
         ListElement {
-            text: qsTr("0.001u")
+            name: qsTr("0.001u")
         }
         ListElement {
-            text: qsTr("0.01u")
+            name: qsTr("0.01u")
         }
         ListElement {
-            text: qsTr("0.1u")
+            name: qsTr("0.1u")
         }
         ListElement {
-            text: qsTr("1u")
+            name: qsTr("1u")
         }
         ListElement {
-            text: qsTr("10u")
+            name: qsTr("10u")
         }
         ListElement {
-            text: qsTr("100u")
+            name: qsTr("100u")
         }
         ListElement {
-            text: qsTr("1mm")
+            name: qsTr("1mm")
         }
         ListElement {
-            text: qsTr("10mm")
+            name: qsTr("10mm")
+        }
+        Component.onCompleted: function(){
+            console.log("menu count=%1".arg(count));
         }
     }
     ListView{
         anchors.fill: parent
+        model: mod
+        interactive: false
         delegate: Rectangle{
-            border.width: 2
+            height: parent.height / mod.count
+            width: parent.width
+            border.width: 1
             border.color: "blue"
+            Text {
+                anchors.centerIn: parent
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                text: name
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: function(){
+                    console.log("clicked");
+                }
+            }
         }
         Component.onCompleted: function(){
             console.log("listview completed width=%1 height=%2".arg(width).arg(height));
