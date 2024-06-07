@@ -22,6 +22,28 @@ void CusConfig::bkColor(QColor color)
     emit bkColorChanged(_basecolor);
 }
 
+QColor CusConfig::hoverColor()
+{
+    return _hoverColor;
+}
+
+void CusConfig::hoverColor(QColor color)
+{
+    _hoverColor = color;
+    emit hoverColorChanged(_hoverColor);
+}
+
+QColor CusConfig::popBkColor()
+{
+    return _popBackgroundColor;
+}
+
+void CusConfig::popBkColor(QColor color)
+{
+    _popBackgroundColor = color;
+    emit popBkColorChanged(_popBackgroundColor);
+}
+
 bool CusConfig::bLoadingPage()
 {
     return _bLoaingPage;

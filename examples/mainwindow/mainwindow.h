@@ -35,7 +35,10 @@ Q_SIGNALS:
 
 public slots:
     void displayNCFunc(QPoint pt);
+    void uiClickNcFunc(int index, QString name);
 
+    void displayJoyFunc(QPoint pt);
+    void uiClickJoyFunc(int index, QString name);
 protected:
     bool event(QEvent *event) override;
 

@@ -3,7 +3,7 @@ import QtQuick.Controls
 Rectangle {
     id: root
     ZMenu{
-        id: ncFuncMenu
+        id: joyMenu
         anchors.fill: parent
         mod: ListModel{
             ListElement{
@@ -37,11 +37,11 @@ Rectangle {
                 name: qsTr("10mm")
             }
         }
-    }
-    Connections{
-        target: ncFuncMenu
-        function onClickItem(index, name){
-            rootMain.uiClickNcFunc(index, name);
+        Connections{
+            target: joyMenu
+            function onClickItem(index, name){
+                rootMain.uiClickJoyFunc(index, name);
+            }
         }
     }
 }

@@ -252,6 +252,7 @@ Rectangle{
                     if(index === 8){ //joy move
                         //pos = control2.mapToItem(bottomRoot, control2.width/2, 0);
                         //console.log("9=%1".arg(JSON.stringify(pos)))
+                        rootMain.displayJoyFunc(pos);
                     }
                     else if(index===9){ //nc function
                         //pos = control2.mapToItem(bottomRoot, control2.width/2, 0);

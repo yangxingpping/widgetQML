@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     popFrame = new Frame(root);
     popFrame->setContextProp(qgconf, gconf);
+    popFrame->setContextProp(qrootMain, this);
     setCentralWidget(root);
     {
         topQuick = new QQuickWidget(this);
@@ -167,6 +168,25 @@ void MainWindow::displayNCFunc(QPoint pt)
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
     popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
     popFrame->show();
+}
+
+void MainWindow::uiClickNcFunc(int index, QString name)
+{
+    popFrame->hide();
+}
+
+void MainWindow::displayJoyFunc(QPoint pt)
+{
+    popFrame->resize(100, 200);
+    popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
+    auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
+    popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
+    popFrame->show();
+}
+
+void MainWindow::uiClickJoyFunc(int index, QString name)
+{
+    popFrame->hide();
 }
 
 bool MainWindow::event(QEvent *event) {

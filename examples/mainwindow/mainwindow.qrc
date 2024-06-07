@@ -63,5 +63,6 @@
         <file>frame.ui</file>
         <file>ncFuncMenu.qml</file>
         <file>ZMenu.qml</file>
+        <file>ncJoyMenu.qml</file>
     </qresource>
 </RCC>
