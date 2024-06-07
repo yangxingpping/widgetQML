@@ -5,43 +5,16 @@ Rectangle {
     ZMenu{
         id: ncFuncMenu
         anchors.fill: parent
-        mod: ListModel{
-            ListElement{
-                name: qsTr("手轮")
-            }
-            ListElement{
-                name: qsTr("连续给进")
-            }
-            ListElement {
-                name: qsTr("0.001u")
-            }
-            ListElement {
-                name: qsTr("0.01u")
-            }
-            ListElement {
-                name: qsTr("0.1u")
-            }
-            ListElement {
-                name: qsTr("1u")
-            }
-            ListElement {
-                name: qsTr("10u")
-            }
-            ListElement {
-                name: qsTr("100u")
-            }
-            ListElement {
-                name: qsTr("1mm")
-            }
-            ListElement {
-                name: qsTr("10mm")
-            }
-        }
+        mod: gconf.ncFuncMenus
     }
     Connections{
         target: ncFuncMenu
         function onClickItem(index, name){
             rootMain.uiClickNcFunc(index, name);
         }
+    }
+    Component.onCompleted: function(){
+        width = 100
+        height = 20 * ncFuncMenu.mod.count
     }
 }

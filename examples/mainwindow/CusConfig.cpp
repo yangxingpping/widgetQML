@@ -44,6 +44,28 @@ void CusConfig::popBkColor(QColor color)
     emit popBkColorChanged(_popBackgroundColor);
 }
 
+QStringList CusConfig::joyMenus()
+{
+    return _joyMenus;
+}
+
+void CusConfig::joyMenus(QStringList menus)
+{
+    _joyMenus = menus;
+    emit joyMenusChanged(_joyMenus);
+}
+
+QStringList CusConfig::ncFuncMenus()
+{
+    return _ncFuncMenus;
+}
+
+void CusConfig::ncFuncMenus(QStringList menus)
+{
+    _ncFuncMenus = menus;
+    emit ncFuncMenusChanged(menus);
+}
+
 bool CusConfig::bLoadingPage()
 {
     return _bLoaingPage;

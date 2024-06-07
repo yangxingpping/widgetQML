@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QQmlEngine>
 #include <QColor>
+#include <QStringList>
 class CusConfig : public QObject {
 	Q_OBJECT;
 	// QML_SINGLETON
@@ -15,9 +16,12 @@ class CusConfig : public QObject {
 	Q_PROPERTY(int mainPageIndex READ mainPageIndex NOTIFY bLoadingPageChanged WRITE mainPageIndex);
 	Q_PROPERTY(int cncModeIndex READ cncModeIndex NOTIFY cncModeIndexChanged WRITE cncModeIndex);
 
+	Q_PROPERTY(QStringList joyMenus READ joyMenus NOTIFY joyMenusChanged WRITE joyMenus);
+	Q_PROPERTY(QStringList ncFuncMenus READ ncFuncMenus NOTIFY ncFuncMenusChanged WRITE ncFuncMenus);
 public:
 	CusConfig(QObject* parent);
 	virtual ~CusConfig();
+
 	QColor bkColor();
 	void bkColor(QColor color);
 
@@ -26,6 +30,12 @@ public:
 
 	QColor popBkColor();
 	void popBkColor(QColor color);
+
+	QStringList joyMenus();
+	void joyMenus(QStringList menus);
+
+	QStringList ncFuncMenus();
+	void ncFuncMenus(QStringList menus);
 
 	bool bLoadingPage();
 	void bLoadingPage(bool b);
@@ -46,6 +56,8 @@ signals:
 	void svgPathChanged(const QString& p);
 	void mainPageIndexChanged(const int index);
 	void cncModeIndexChanged(const int index);
+	void joyMenusChanged(QStringList menus);
+	void ncFuncMenusChanged(QStringList menus);
 
 private:
 	QColor _basecolor{ 55, 82, 120 };
@@ -56,4 +68,6 @@ private:
 	PageIndex _mainPage{ PageIndex::Home };
 	int _assistPage{ 0 };
 	int _cncModeIndex{ 0 };
+	QStringList _joyMenus;
+	QStringList _ncFuncMenus;
 };

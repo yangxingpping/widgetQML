@@ -163,6 +163,8 @@ MainWindow::~MainWindow() = default;
 
 void MainWindow::displayNCFunc(QPoint pt)
 {
+    QStringList lst{ "M01", "跳段", "设置程序段跳过级别"};
+    gconf->ncFuncMenus(lst);
     popFrame->resize(100, 200);
     popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
@@ -177,6 +179,8 @@ void MainWindow::uiClickNcFunc(int index, QString name)
 
 void MainWindow::displayJoyFunc(QPoint pt)
 {
+    QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+    gconf->joyMenus(lst);
     popFrame->resize(100, 200);
     popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());

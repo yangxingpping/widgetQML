@@ -5,6 +5,7 @@ Rectangle {
     id: root
     anchors.fill: parent
     property var mod: null;
+    color: "blue"
     border.width: 2
     border.color: "lightgray"
     signal clickItem(int index, string name);
@@ -16,7 +17,7 @@ Rectangle {
         interactive: false
         delegate: Rectangle{
             id: del
-            height: root.height / mod.count
+            height: root.height / mod.length
             width: parent.width
             color: gconf.popBkColor
             Rectangle{
@@ -31,7 +32,7 @@ Rectangle {
                 anchors.centerIn: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: name
+                text: modelData
                 color: gconf.backDeepBaseColor
             }
             MouseArea{
