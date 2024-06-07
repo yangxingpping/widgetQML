@@ -61,11 +61,4 @@
         <file>res/svg/CncMode/Single.svg</file>
         <file>res/svg/CncMode/Test.svg</file>
     </qresource>
-    <qresource prefix="/global">
-        <file>global/CusConfig.qml</file>
-        <file>global/ItemsFooter.qml</file>
-        <file>global/ItemsOriginal.qml</file>
-        <file>global/Lang.qml</file>
-        <file>global/qmldir</file>
-    </qresource>
 </RCC>

@@ -278,15 +278,18 @@ Rectangle{
         property bool toEnd: true
         animation: ParallelAnimation {
             id: animBottomMenu
-            property int timemini : 600
-            //NumberAnimation { target: rectBottomMenuMain; property: "y"; duration: animBottomMenu.timemini; from: 0; to: -r.height; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
-            NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: animBottomMenu.timemini; from: 0; to: r.height; easing.type: Easing.InOutQuad }
+            property int timemini : 30000
+            NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: 50000; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: 50000; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: 50000; from: 0; to: r.height; easing.type: Easing.InOutQuad }
+            onFinished: {
+                console.log("animation finished")
+            }
         }
     }
 
     function switchBottomMenu(){
+        console.log("call switch to end flag=%1".arg(controllerBottom.toEnd))
         if(controllerBottom.toEnd){
             controllerBottom.completeToEnd();
         }
@@ -299,20 +302,6 @@ Rectangle{
     Component.onCompleted: {
     }
 
-    function initProdDetailMenu(){
-        detailModel.clear()
-        detailModel.append({"name": qsTr("Auto"),"iconsource": "ProdAuto"});
-        detailModel.append({"name": qsTr("Single"),"iconsource": "ProdSingle"});
-        detailModel.append({"name": qsTr("MDI"),"iconsource": "ProdMDI"});
-        detailModel.append({"name": qsTr("Rapid"),"iconsource": "ProdRapid"});
-        detailModel.append({"name": qsTr("Search"),"iconsource": "ProdSearch"});
-        detailModel.append({"name": qsTr("Test"),"iconsource": "ProdTest"});
-        detailModel.append({"name": qsTr("Manual"),"iconsource": "ProdManual"});
-        detailModel.append({"name": qsTr("Home"),"iconsource": "ProdHome"});
-        detailModel.append({"name": qsTr("Jog"),"iconsource": "ProdJog"});
-        detailModel.append({"name": qsTr("NCFunc"),"iconsource": "ProdNCFunc"});
-        detailModel.append({"name": qsTr("Reset"),"iconsource": "ProdReset"});
-    }
     function switchToPage(index){
         console.log("switch to main page %1".arg(index))
         switch(index){
