@@ -26,7 +26,20 @@ Rectangle{
     height: bottomPaneHeight
     z: 998
     
-    
+    Shape {
+        ShapePath {
+            id: mainBottomRealPanel
+            fillColor: "#5d7492"
+            strokeWidth: 2
+            strokeColor: "#5d7492"
+            startX: 30; startY: 0
+            PathSvg { 
+                id: mainBottomRealPanelPath
+                path: "M38.3513 0C34.6227 0 31.2038 2.0744 29.4817 5.38152L0 %2H765.497H922C923.105 %2 %1 61.1046 %1 60V0H38.3513Z".arg(r.width).arg(r.height)
+            }
+        }
+
+    }
 
     Rectangle{
         id: rectBottomMenuMain
@@ -39,7 +52,7 @@ Rectangle{
         color: "transparent"
         MainBottomMenu{
             id: bottomMenu
-            color: "red"
+            color: "transparent"
         }
     }
 

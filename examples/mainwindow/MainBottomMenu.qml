@@ -12,7 +12,7 @@ Rectangle{
     property var btnDefaultBackgroundColor: Qt.rgba(1,1,1,0.0)
     property bool debug: true
     anchors.fill: parent
-    color: "red"
+    color: "transparent"
     signal sClickBottomMainMenu(int index, int sub);
     signal sClickBottomDetailMenu(int index, int evalue);
 
@@ -68,7 +68,7 @@ Rectangle{
         id: rectBottomMenuMain
         x: 0
         y: 0
-        color: "yellow"
+        color: "transparent"
         width: parent.width
         height: parent.height
         ButtonGroup{
