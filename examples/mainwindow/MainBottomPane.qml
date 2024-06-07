@@ -96,7 +96,7 @@ Rectangle{
                 radius: 1
                 anchors.centerIn: parent
                 height: parent.height
-                icon.source: "qrc:/example/res/svg/mode_switching_icon.svg"
+                icon.source: "%1/mode_switching_icon.svg".arg(gconf.svgPath)
                 icon.color: "transparent"
                 icon.width: rectBottomRight.width / 2
                 icon.height: rectBottomRight.height / 2

@@ -61,3 +61,14 @@ void CusConfig::mainPageIndex(int index)
     _mainPage = optv.value();
     emit mainPageIndexChanged(index);
 }
+
+int CusConfig::cncModeIndex()
+{
+    return _cncModeIndex;
+}
+
+void CusConfig::cncModeIndex(int index)
+{
+    _cncModeIndex = index;
+    emit cncModeIndexChanged(index);
+}

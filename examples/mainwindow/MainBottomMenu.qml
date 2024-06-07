@@ -115,6 +115,26 @@ Rectangle{
                 iconsource: "Extend.svg"
             }
         }
+
+        ListModel {
+            id: detailModel
+            
+            Component.onCompleted: {
+                clear()
+                append({"name": qsTr("Auto"),"iconsource": "Auto"});
+                append({"name": qsTr("Single"),"iconsource": "Single"});
+                append({"name": qsTr("MDI"),"iconsource": "MDI"});
+                append({"name": qsTr("Rapid"),"iconsource": "Rapid"});
+                append({"name": qsTr("Search"),"iconsource": "Search"});
+                append({"name": qsTr("Test"),"iconsource": "Test"});
+                append({"name": qsTr("Manual"),"iconsource": "Manual"});
+                append({"name": qsTr("Home"),"iconsource": "Home"});
+                append({"name": qsTr("Jog"),"iconsource": "Jog"});
+                append({"name": qsTr("NCFunc"),"iconsource": "NCFunc"});
+                append({"name": qsTr("Reset"),"iconsource": "Reset"});
+            }
+        }
+
         ListView {
             id: rowBottomBtns
             topMargin: 0
@@ -133,14 +153,14 @@ Rectangle{
                 radius: 2
                 text: name
                 font.pixelSize: 10
-                icon.source: "%1%2".arg(CusConfig.svgbasePath).arg(iconsource);
+                icon.source: "%1/%2".arg(gconf.svgPath).arg(iconsource);
                 icon.color: "transparent"
                 icon.width: 34
                 icon.height: 34
                 spacing: 0
                 display: AbstractButton.TextUnderIcon
                 onClicked: {
-                    CusConfig.mainPageIndex = index;
+                    gconf.mainPageIndex = index;
                     sClickBottomMainMenu(index + 1, 0);
                 }
 
@@ -160,7 +180,7 @@ Rectangle{
                     Image{
                         anchors.fill: parent
                         source: "%1/%2".arg(gconf.svgPath).arg("BottomCheckedMenuStyle.svg")
-                        visible: CusConfig.mainPageIndex === index
+                        visible: gconf.mainPageIndex === index
                     }
                 }
                 Component.onCompleted: {
@@ -194,16 +214,16 @@ Rectangle{
             rightMargin: 10
             orientation: ListView.Horizontal
             anchors.fill: parent
-            model: CusConfig.detailModel
+            model: detailModel
             delegate: RoundButton {
                 id: control2
                 height: rowBottomDetails.height
                 ButtonGroup.group: groupDetailButtons
-                width : (rowBottomDetails.width - rowBottomDetails.leftMargin - rowBottomDetails.rightMargin) / CusConfig.detailModel.count
+                width : (rowBottomDetails.width - rowBottomDetails.leftMargin - rowBottomDetails.rightMargin) / detailModel.count
                 radius: 2
                 text: name
                 font.pixelSize: r.width > 700 ? 10 : 8 //10
-                icon.source: "%1CncMode/%2%3".arg(CusConfig.svgbasePath).arg(iconsource).arg(".svg")
+                icon.source: "%1/CncMode/%2%3".arg(gconf.svgPath).arg(iconsource).arg(".svg")
                 icon.color: "transparent"
                 icon.width: 30
                 icon.height: 30
@@ -223,8 +243,8 @@ Rectangle{
                     }
                     Image{
                         anchors.fill: parent
-                        source: "%1/%2".arg(CusConfig.svgbasePath).arg("BottomCheckedMenuStyle.svg")
-                        visible: CusConfig.cncModeIndex === index //groupDetailButtons.clickedIndex === index
+                        source: "%1/%2".arg(gconf.svgPath).arg("BottomCheckedMenuStyle.svg")
+                        visible: gconf.cncModeIndex === index //groupDetailButtons.clickedIndex === index
                     }
                 }
                 onClicked: {

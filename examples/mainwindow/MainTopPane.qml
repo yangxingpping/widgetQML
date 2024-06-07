@@ -9,7 +9,7 @@ Rectangle {
     Rectangle{
         id: mainTopLeftPane
         anchors{
-            top: title.bottom
+            top: parent.top
             left: parent.left
         }
         width: parent.width * 0.874
@@ -39,7 +39,7 @@ Rectangle {
         id: mainTopRightPane
         anchors{
             right: parent.right
-            top: title.bottom
+            top: parent.top
         }
         height: parent.height
         width: parent.width - mainTopLeftPane.width - 4
