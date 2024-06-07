@@ -41,6 +41,7 @@ public slots:
     void uiClickJoyFunc(int index, QString name);
 
     void uiGoProdHome();
+    void uiDisplayRightMenuSub(int index, QPoint pt);
 
 protected:
     bool event(QEvent *event) override;

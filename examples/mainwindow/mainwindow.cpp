@@ -67,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     {
         rightQuick = new QQuickWidget(this);
         rightQuick->rootContext()->setContextProperty(qgconf, gconf);
+        rightQuick->rootContext()->setContextProperty(qrootMain, this);
         QUrl source1("qrc:/rightQuick.qml");
         rightQuick->setSource(source1);
         rightQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -195,6 +196,17 @@ void MainWindow::uiGoProdHome()
 {
     QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
     gconf->rightMenus(lst);
+}
+
+void MainWindow::uiDisplayRightMenuSub(int index, QPoint pt)
+{
+    QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+    gconf->ncFuncMenus(lst);
+    popFrame->resize(120, lst.size() * 20);
+    popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
+    auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
+    popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
+    popFrame->show();
 }
 
 bool MainWindow::event(QEvent *event) {

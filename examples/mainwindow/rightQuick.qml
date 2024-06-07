@@ -62,8 +62,9 @@ Rectangle {
             font.pixelSize: 10 // mainBottomBasePane.height > 450 ? 10 : 7
             spacing: 0
             onClicked: {
+                var pos = control.mapToItem(root, 0, 0);
+                rootMain.uiDisplayRightMenuSub(index, pos);
             }
-
         }
     }
 }
