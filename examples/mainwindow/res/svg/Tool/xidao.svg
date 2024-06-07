@@ -1,0 +1,27 @@
+<svg width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#233;&#147;&#163;&#229;&#136;&#128;">
+<g id="&#233;&#147;&#163;&#229;&#136;&#128;_2">
+<g id="Group 610">
+<g id="Group 609">
+<mask id="mask0_293_4138" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="1" width="6" height="16">
+<path id="Rectangle 474" d="M3 1H9V17H3L3 1Z" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_293_4138)">
+<path id="Rectangle 475" d="M3 1H9V17H3L3 1Z" fill="url(#paint0_linear_293_4138)" stroke="#375278"/>
+<path id="Vector 203 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M3.375 9.51431L10.8563 5.69493L10.5254 6.84953L3.00804 10.7948L3.375 9.51431Z" fill="#375278"/>
+<path id="Vector 203 (Stroke)_2" fill-rule="evenodd" clip-rule="evenodd" d="M3.375 12.7145L10.8563 8.89513L10.5254 10.0497L3.00804 13.995L3.375 12.7145Z" fill="#375278"/>
+<path id="Vector 203 (Stroke)_3" fill-rule="evenodd" clip-rule="evenodd" d="M3.36718 15.9147L10.8485 12.0953L10.5176 13.2499L3.00022 17.1951L3.36718 15.9147Z" fill="#375278"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_293_4138" x1="9.49994" y1="5.97545" x2="2.7501" y2="5.97545" gradientUnits="userSpaceOnUse">
+<stop offset="0.104167" stop-color="#6B7A91"/>
+<stop offset="0.427083" stop-color="#B4BBCD"/>
+<stop offset="0.703125" stop-color="#E5EAF9"/>
+<stop offset="0.973958" stop-color="#808D9E"/>
+</linearGradient>
+</defs>
+</svg>

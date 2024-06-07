@@ -1,0 +1,318 @@
+import QtQuick
+import QtQuick.Controls
+import Qt.labs.qmlmodels
+import QtQuick.Controls.Material
+import QtQuick.Controls.Material.impl
+
+Rectangle{
+    id: r
+    property var bottomPaneSelectedButtonColor: Qt.rgba(1,1,1,1)
+    property var bottomPaneNoSelectButtonColor: Qt.rgba(1,1,1,0.6)
+    property string btnClickedBackgroundColor: "#6d829d"
+    property var btnDefaultBackgroundColor: Qt.rgba(1,1,1,0.0)
+    property int cncModeIndex: 0
+    property int tryCncModeIndex: 0
+    property bool debug: true
+    anchors.fill: parent
+    color: "transparent"
+    signal sClickBottomMainMenu(int index, int sub);
+    signal sClickBottomDetailMenu(int index, int evalue);
+
+    function updateMainPage(index){
+        updateGroupDisplay(groupMainButtons, index);
+    }
+
+    function updateDetailPage(index){
+        updateGroupDisplay(groupDetailButtons, index);
+    }
+
+    function switchJoyOrNC(joy){
+        var enabled =  joy ? groupDetailButtons.buttons[8] : groupDetailButtons.buttons[9];
+        var disabled =  joy ? groupDetailButtons.buttons[9] : groupDetailButtons.buttons[8];
+        setChecked(enabled);
+        setUnchecked(disabled);
+    }
+
+    function cleanJoyAndNC(){
+        console.log("cleanJoyAndNC");
+        setUnchecked(groupDetailButtons.buttons[8]);
+        setUnchecked(groupDetailButtons.buttons[9]);
+    }
+
+    function updateGroupDisplay(btnGroup, index){
+        if(btnGroup.buttons.length<=0){
+            return;
+        }
+
+        if(btnGroup.clickedIndex !== -1){
+            setUnchecked(btnGroup.buttons[btnGroup.clickedIndex]);
+        }
+
+        btnGroup.clickedIndex = index;
+        btnGroup.checkedButton = btnGroup.buttons[index];
+        setChecked(btnGroup.buttons[index]);
+    }
+
+    function setChecked(btn){
+        if(btn && btn.contentItem){
+            btn.contentItem.color = r.bottomPaneSelectedButtonColor
+        } 
+        if(btn && btn.background){
+            btn.background.color = r.btnClickedBackgroundColor
+        }
+    }
+    function setUnchecked(btn){
+        btn.contentItem.color =  r.bottomPaneNoSelectButtonColor
+        btn.background.color = "transparent";
+    }
+
+    Rectangle{
+        id: rectBottomMenuMain
+        x: 0
+        y: 0
+        color: "transparent"
+        width: parent.width
+        height: parent.height
+        ButtonGroup{
+            id: groupMainButtons
+            exclusive: true
+            property int clickedIndex: -1
+            onClicked: function(btn) {
+            }
+        }
+        ListModel {
+            id: mainModel
+            ListElement {
+                name: qsTr("Prod")
+                iconsource: "Prod.svg"
+            }
+            ListElement {
+                name: qsTr("Prog")
+                iconsource: "Prog.svg"
+            }
+            ListElement {
+                name: qsTr("Tool")
+                iconsource: "Tool.svg"
+            }
+            ListElement {
+                name: qsTr("Work")
+                iconsource: "Work.svg"
+            }
+            ListElement {
+                name: qsTr("Variable")
+                iconsource: "Variable.svg"
+            }
+            ListElement {
+                name: qsTr("Diag")
+                iconsource: "Diag.svg"
+            }
+            ListElement {
+                name: qsTr("Service")
+                iconsource: "Service.svg"
+            }
+            ListElement {
+                name: qsTr("Extend")
+                iconsource: "Extend.svg"
+            }
+        }
+        ListView {
+            id: rowBottomBtns
+            topMargin: 0
+            bottomMargin: 0
+            leftMargin: 68
+            interactive: false
+            rightMargin: r.width > 700 ? 68 : 10
+            anchors.fill: parent
+            orientation: ListView.Horizontal
+            model: mainModel
+            delegate: RoundButton {
+                id: control
+                height: parent.height
+                ButtonGroup.group: groupMainButtons
+                width : (rowBottomBtns.width - rowBottomBtns.leftMargin - rowBottomBtns.rightMargin) / mainModel.count
+                radius: 2
+                text: name
+                font.pixelSize: 10
+                icon.source: "%1%2".arg(CusConfig.svgbasePath).arg(iconsource);
+                icon.color: "transparent"
+                icon.width: 34
+                icon.height: 34
+                spacing: 0
+                display: AbstractButton.TextUnderIcon
+                onClicked: {
+                    CusConfig.mainPageIndex = index;
+                    sClickBottomMainMenu(index + 1, 0);
+                }
+
+                background:  Rectangle {
+                    implicitHeight: control.Material.delegateHeight
+                    color:  "transparent"
+                    Ripple {
+                        clip: true
+                        clipRadius: parent.radius
+                        width: parent.width
+                        height: parent.height
+                        pressed: control.pressed
+                        anchor: control
+                        active: enabled && (control.down || control.visualFocus || control.hovered)
+                        color: control.flat && control.highlighted ? control.Material.highlightedRippleColor : control.Material.rippleColor
+                    }
+                    Image{
+                        anchors.fill: parent
+                        source: "%1/%2".arg(gconf.svgPath).arg("BottomCheckedMenuStyle.svg")
+                        visible: CusConfig.mainPageIndex === index
+                    }
+                }
+                Component.onCompleted: {
+                    contentItem.color =  r.bottomPaneNoSelectButtonColor
+                }
+            }
+            Component.onCompleted: {
+                //r.updateMainPage(0);
+            }
+        }
+    }
+    Rectangle{
+        id: rectBottomMenuDetail
+        color: "transparent"
+        x: parent.x
+        y: parent.y + rectBottomMenuMain.height
+        width: parent.width
+        height: 0
+        ButtonGroup{
+            id: groupDetailButtons
+            exclusive: false
+            property int clickedIndex: -1
+        }
+
+        ListView {
+            id: rowBottomDetails
+            topMargin: 0
+            bottomMargin: 0
+            interactive: false
+            leftMargin: 68/2
+            rightMargin: 10
+            orientation: ListView.Horizontal
+            anchors.fill: parent
+            model: CusConfig.detailModel
+            delegate: RoundButton {
+                id: control2
+                height: rowBottomDetails.height
+                ButtonGroup.group: groupDetailButtons
+                width : (rowBottomDetails.width - rowBottomDetails.leftMargin - rowBottomDetails.rightMargin) / CusConfig.detailModel.count
+                radius: 2
+                text: name
+                font.pixelSize: r.width > 700 ? 10 : 8 //10
+                icon.source: "%1CncMode/%2%3".arg(CusConfig.svgbasePath).arg(iconsource).arg(".svg")
+                icon.color: "transparent"
+                icon.width: 30
+                icon.height: 30
+                spacing: 0
+                display: AbstractButton.TextUnderIcon
+                background: Rectangle{
+                    color: "transparent"
+                    Ripple {
+                        clip: true
+                        clipRadius: parent.radius
+                        width: parent.width
+                        height: parent.height
+                        pressed: control2.pressed
+                        anchor: control2
+                        active: enabled && (control2.down || control2.visualFocus || control2.hovered)
+                        color: control2.flat && control2.highlighted ? control2.Material.highlightedRippleColor : control2.Material.rippleColor
+                    }
+                    Image{
+                        anchors.fill: parent
+                        source: "%1/%2".arg(CusConfig.svgbasePath).arg("BottomCheckedMenuStyle.svg")
+                        visible: CusConfig.cncModeIndex === index //groupDetailButtons.clickedIndex === index
+                    }
+                }
+                onClicked: {
+                    var pos;
+                    sClickBottomDetailMenu(index, evalue)
+                    if(index === 8){ //joy move
+                        pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
+                        window.displayJoyMoveMenu(pos.x, pos.y);
+
+                    }
+                    else if(index===9){ //nc function
+                        pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
+                        window.displayNcFunctionMenu(pos.x, pos.y);
+                    }
+                }
+                Component.onCompleted: {
+                    contentItem.color =  r.bottomPaneNoSelectButtonColor
+                }
+            }
+            
+            Component.onCompleted: {
+                if(r.debug){
+                    r.updateDetailPage(0);
+                }
+            }
+        }
+    }
+
+    AnimationController {
+        id: controllerBottom
+        property bool toEnd: true
+        animation: ParallelAnimation {
+            id: animBottomMenu
+            property int timemini : 600
+            //NumberAnimation { target: rectBottomMenuMain; property: "y"; duration: animBottomMenu.timemini; from: 0; to: -r.height; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: animBottomMenu.timemini; from: 0; to: r.height; easing.type: Easing.InOutQuad }
+        }
+    }
+
+    function switchBottomMenu(){
+        if(controllerBottom.toEnd){
+            controllerBottom.completeToEnd();
+        }
+        else{
+            controllerBottom.completeToBeginning()
+        }
+        controllerBottom.toEnd = !controllerBottom.toEnd
+    }
+
+    Component.onCompleted: {
+    }
+
+    function initProdDetailMenu(){
+        detailModel.clear()
+        detailModel.append({"name": qsTr("Auto"),"iconsource": "ProdAuto"});
+        detailModel.append({"name": qsTr("Single"),"iconsource": "ProdSingle"});
+        detailModel.append({"name": qsTr("MDI"),"iconsource": "ProdMDI"});
+        detailModel.append({"name": qsTr("Rapid"),"iconsource": "ProdRapid"});
+        detailModel.append({"name": qsTr("Search"),"iconsource": "ProdSearch"});
+        detailModel.append({"name": qsTr("Test"),"iconsource": "ProdTest"});
+        detailModel.append({"name": qsTr("Manual"),"iconsource": "ProdManual"});
+        detailModel.append({"name": qsTr("Home"),"iconsource": "ProdHome"});
+        detailModel.append({"name": qsTr("Jog"),"iconsource": "ProdJog"});
+        detailModel.append({"name": qsTr("NCFunc"),"iconsource": "ProdNCFunc"});
+        detailModel.append({"name": qsTr("Reset"),"iconsource": "ProdReset"});
+    }
+    function switchToPage(index){
+        console.log("switch to main page %1".arg(index))
+        switch(index){
+            case 0: //home(load) page
+            {
+                //mainBottomBasePane.visible = false
+            }break;
+            case 1: //prod page
+            {
+                //initProdDetailMenu()
+                //mainBottomBasePane.visible = true
+            }break;
+            case 2: //prog page
+            {
+                //mainBottomBasePane.visible = true
+            }
+            default:
+            {
+
+            }break;
+        }
+    }
+}

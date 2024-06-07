@@ -13,4 +13,5 @@ qwk_add_example(${PROJECT_NAME}
     LINKS QWKWidgets WidgetFrame
 )
 
+
 target_link_libraries(QWKExample_MainWindow PRIVATE KF6SyntaxHighlighting PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::Qml PRIVATE Qt${QT_VERSION_MAJOR}::QuickWidgets)

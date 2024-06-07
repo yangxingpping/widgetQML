@@ -7,6 +7,10 @@
         <file>bottomQuick.qml</file>
         <file>rightQuick.qml</file>
         <file>contentQuick.qml</file>
+        <file>MainTopPane.qml</file>
+        <file>MainBottomMenu.qml</file>
+        <file>MainBottomPane.qml</file>
+        <file>res/svg/avatar_1.svg</file>
     </qresource>
     <qresource prefix="/global">
         <file>global/CusConfig.qml</file>

@@ -55,6 +55,7 @@ macro(qwk_add_library _target)
 
     add_library(${_target} ${_type})
 
+
     if(WIN32 AND NOT FUNC_NO_WIN_RC AND(${_type} STREQUAL "SHARED"))
         qm_add_win_rc(${_target}
             NAME ${QWINDOWKIT_INSTALL_NAME}

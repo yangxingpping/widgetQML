@@ -1,6 +1,9 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.27)
 
-project(QWindowKit VERSION 1.1.1.0 LANGUAGES CXX)
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+  CACHE STRING "Vcpkg toolchain file")
+
+project(qwindowkit VERSION 1.1.1.0 LANGUAGES CXX)
 
 # ----------------------------------
 # Build Options
@@ -15,6 +18,8 @@ option(QWINDOWKIT_INSTALL "Install library" ON)
 option(QWINDOWKIT_ENABLE_QT_WINDOW_CONTEXT "Enable Qt Window Context anyway" OFF)
 option(QWINDOWKIT_ENABLE_WINDOWS_SYSTEM_BORDERS "Enable system borders on Windows" ON)
 option(QWINDOWKIT_ENABLE_STYLE_AGENT "Enable building style agent" ON)
+
+include_directories(inc)
 
 #[[
 
@@ -79,6 +84,10 @@ find_package(qmsetup QUIET)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets QuickWidgets Qml)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets QuickWidgets Qml)
+
+find_package(fmt REQUIRED)
+find_package(spdlog REQUIRED)
+find_package(magic_enum CONFIG REQUIRED)
 
 if(NOT TARGET qmsetup::library)
     # Modify this variable according to your project structure

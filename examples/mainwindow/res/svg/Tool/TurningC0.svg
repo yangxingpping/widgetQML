@@ -1,0 +1,11 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="C0">
+<path id="Rectangle 469" opacity="0.4" d="M0 0H100V100H0V0Z" fill="#E9EEF5"/>
+<g id="Group 578">
+<circle id="Ellipse 73" cx="50" cy="50" r="19.5" transform="rotate(-90 50 50)" fill="#B4BBCC" stroke="#96A4B8"/>
+<path id="Ellipse 72" d="M50 45.5C52.4853 45.5 54.5 47.5147 54.5 50C54.5 52.4853 52.4853 54.5 50 54.5C47.5147 54.5 45.5 52.4853 45.5 50C45.5 47.5147 47.5147 45.5 50 45.5Z" fill="white" stroke="#96A4B8"/>
+</g>
+<path id="Vector 193" d="M50 100L50.0001 -3.34838e-06" stroke="#375278" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+<path id="Vector 202" d="M100 50L-3.34838e-06 50" stroke="#375278" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+</g>
+</svg>
