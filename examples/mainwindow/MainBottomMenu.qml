@@ -249,13 +249,12 @@ Rectangle{
                     var pos;
                     sClickBottomDetailMenu(index)
                     if(index === 8){ //joy move
-                        //pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
-                        //window.displayJoyMoveMenu(pos.x, pos.y);
-
+                        pos = control2.mapToItem(bottomRoot, control2.width/2, 0);
+                        console.log("9=%1".arg(JSON.stringify(pos)))
                     }
                     else if(index===9){ //nc function
-                        //pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
-                        //window.displayNcFunctionMenu(pos.x, pos.y);
+                        pos = control2.mapToItem(bottomRoot, control2.width/2, 0);
+                        console.log("9=%1".arg(JSON.stringify(pos)))
                     }
                 }
                 Component.onCompleted: {
@@ -297,32 +296,6 @@ Rectangle{
         }
         else{
             controllerBottom.completeToBeginning();
-        }
-    }
-
-    Component.onCompleted: {
-    }
-
-    function switchToPage(index){
-        console.log("switch to main page %1".arg(index))
-        switch(index){
-            case 0: //home(load) page
-            {
-                //mainBottomBasePane.visible = false
-            }break;
-            case 1: //prod page
-            {
-                //initProdDetailMenu()
-                //mainBottomBasePane.visible = true
-            }break;
-            case 2: //prog page
-            {
-                //mainBottomBasePane.visible = true
-            }
-            default:
-            {
-
-            }break;
         }
     }
 }
