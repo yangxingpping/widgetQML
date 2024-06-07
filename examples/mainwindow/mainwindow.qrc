@@ -60,5 +60,6 @@
         <file>res/svg/CncMode/Search.svg</file>
         <file>res/svg/CncMode/Single.svg</file>
         <file>res/svg/CncMode/Test.svg</file>
+        <file>frame.ui</file>
     </qresource>
 </RCC>

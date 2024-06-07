@@ -50,6 +50,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
     auto root = new QWidget(this);
     root->setContentsMargins(0, 0, 0, 0);
+
+    popFrame = new Frame(root);
+
     setCentralWidget(root);
     {
         topQuick = new QQuickWidget(this);
@@ -72,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     {
         bottomQuick = new QQuickWidget(this);
         bottomQuick->rootContext()->setContextProperty(qgconf, gconf);
+        bottomQuick->rootContext()->setContextProperty(qrootMain, this);
         QUrl source1("qrc:/bottomQuick.qml");
         bottomQuick->setSource(source1);
         bottomQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -155,6 +159,14 @@ static inline void emulateLeaveEvent(QWidget *widget) {
 }
 
 MainWindow::~MainWindow() = default;
+
+void MainWindow::displayNCFunc(QPoint pt)
+{
+    popFrame->resize(100, 200);
+    auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
+    popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
+    popFrame->show();
+}
 
 bool MainWindow::event(QEvent *event) {
     switch (event->type()) {

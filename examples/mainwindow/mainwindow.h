@@ -10,6 +10,7 @@
 #include <QQuickWidget>
 
 #include "codeeditor.h"
+#include "frame.h"
 #include "CusConfig.h"
 
 namespace QWK {
@@ -31,6 +32,9 @@ public:
 
 Q_SIGNALS:
     void themeChanged();
+
+public slots:
+    void displayNCFunc(QPoint pt);
 
 protected:
     bool event(QEvent *event) override;
@@ -55,6 +59,9 @@ private:
     QQuickWidget *bottomQuick{nullptr};
     CusConfig *gconf{nullptr};
     QString qgconf{"gconf"};
+    QString qrootMain{ "rootMain" };
+
+    QFrame* popFrame{ nullptr };
 };
 
 #endif // MAINWINDOW_H
