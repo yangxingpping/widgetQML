@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     root->setContentsMargins(0, 0, 0, 0);
 
     popFrame = new Frame(root);
-
+    popFrame->setContextProp(qgconf, gconf);
     setCentralWidget(root);
     {
         topQuick = new QQuickWidget(this);
@@ -163,6 +163,7 @@ MainWindow::~MainWindow() = default;
 void MainWindow::displayNCFunc(QPoint pt)
 {
     popFrame->resize(100, 200);
+    popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
     auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
     popFrame->move(rPos.x() + pt.x(), rPos.y() - 200 + bottomQuick->geometry().height());
     popFrame->show();

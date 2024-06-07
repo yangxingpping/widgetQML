@@ -28,7 +28,6 @@ Item {
         y: 0
         width: root.width
         height: 400
-        color: "yellow"
     }
     Text {
         id: text

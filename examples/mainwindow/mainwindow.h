@@ -61,7 +61,7 @@ private:
     QString qgconf{"gconf"};
     QString qrootMain{ "rootMain" };
 
-    QFrame* popFrame{ nullptr };
+    Frame* popFrame{ nullptr };
 };
 
 #endif // MAINWINDOW_H

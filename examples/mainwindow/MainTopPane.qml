@@ -14,7 +14,6 @@ Rectangle {
         }
         width: parent.width * 0.874
         height: parent.height
-        //color: "yellow"
         Component.onCompleted: {
             console.debug("main top left width %1, heigth %2".arg(width).arg(height));
         }

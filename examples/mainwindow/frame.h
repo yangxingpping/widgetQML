@@ -13,6 +13,8 @@ class Frame : public QFrame {
 public:
     explicit Frame(QWidget *parent = nullptr);
     ~Frame();
+    void setSource(QUrl url);
+    void setContextProp(QString name, QObject* obj);
 
 private:
     Ui::Frame *ui;

@@ -61,5 +61,6 @@
         <file>res/svg/CncMode/Single.svg</file>
         <file>res/svg/CncMode/Test.svg</file>
         <file>frame.ui</file>
+        <file>ncFuncMenu.qml</file>
     </qresource>
 </RCC>
