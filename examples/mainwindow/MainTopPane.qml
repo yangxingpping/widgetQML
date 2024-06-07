@@ -4,7 +4,7 @@ import QtQuick.Shapes 1.5
 
 Rectangle {
     id: rootBackground
-    color: "transparent" //CusConfig.backDeepBaseColor
+    color: "transparent"
     anchors.fill: parent
     Rectangle{
         id: mainTopLeftPane

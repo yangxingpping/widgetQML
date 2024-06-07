@@ -43,5 +43,5 @@ private:
 	QString _svgPath{ "qrc:/res/svg" };
 	PageIndex _mainPage{ PageIndex::Home };
 	int _assistPage{ 0 };
-	int _cncModeIndex{ -1 };
+	int _cncModeIndex{ 0 };
 };

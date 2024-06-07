@@ -14,7 +14,7 @@ Rectangle{
     anchors.fill: parent
     color: "transparent"
     signal sClickBottomMainMenu(int index, int sub);
-    signal sClickBottomDetailMenu(int index, int evalue);
+    signal sClickBottomDetailMenu(int index);
 
     function updateMainPage(index){
         updateGroupDisplay(groupMainButtons, index);
@@ -247,15 +247,15 @@ Rectangle{
                 }
                 onClicked: {
                     var pos;
-                    sClickBottomDetailMenu(index, evalue)
+                    sClickBottomDetailMenu(index)
                     if(index === 8){ //joy move
-                        pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
-                        window.displayJoyMoveMenu(pos.x, pos.y);
+                        //pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
+                        //window.displayJoyMoveMenu(pos.x, pos.y);
 
                     }
                     else if(index===9){ //nc function
-                        pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
-                        window.displayNcFunctionMenu(pos.x, pos.y);
+                        //pos = control2.mapToItem(rectMainWindow, control2.width/2, 0);
+                        //window.displayNcFunctionMenu(pos.x, pos.y);
                     }
                 }
                 Component.onCompleted: {
