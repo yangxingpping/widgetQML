@@ -115,12 +115,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     rootLayout->setSpacing(1);
 
     loadStyleSheet(Light);
-    // emit pedit->sig1(5);
 
-    // setWindowTitle(tr("Next"));
-    resize(860, 640);
-    // setMinimumSize(860, 640);
-    // setMaximumSize(maximumSize());
+    uiGoProdHome();
+    
+    resize(1024, 768);
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -191,6 +189,12 @@ void MainWindow::displayJoyFunc(QPoint pt)
 void MainWindow::uiClickJoyFunc(int index, QString name)
 {
     popFrame->hide();
+}
+
+void MainWindow::uiGoProdHome()
+{
+    QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+    gconf->rightMenus(lst);
 }
 
 bool MainWindow::event(QEvent *event) {

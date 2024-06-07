@@ -39,6 +39,9 @@ public slots:
 
     void displayJoyFunc(QPoint pt);
     void uiClickJoyFunc(int index, QString name);
+
+    void uiGoProdHome();
+
 protected:
     bool event(QEvent *event) override;
 

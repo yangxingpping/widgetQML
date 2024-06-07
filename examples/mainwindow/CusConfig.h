@@ -18,6 +18,7 @@ class CusConfig : public QObject {
 
 	Q_PROPERTY(QStringList joyMenus READ joyMenus NOTIFY joyMenusChanged WRITE joyMenus);
 	Q_PROPERTY(QStringList ncFuncMenus READ ncFuncMenus NOTIFY ncFuncMenusChanged WRITE ncFuncMenus);
+	Q_PROPERTY(QStringList rightMenus READ rightMenus NOTIFY rightMenusChanged WRITE rightMenus);
 public:
 	CusConfig(QObject* parent);
 	virtual ~CusConfig();
@@ -36,6 +37,9 @@ public:
 
 	QStringList ncFuncMenus();
 	void ncFuncMenus(QStringList menus);
+
+	QStringList rightMenus();
+	void rightMenus(QStringList menus);
 
 	bool bLoadingPage();
 	void bLoadingPage(bool b);
@@ -58,6 +62,7 @@ signals:
 	void cncModeIndexChanged(const int index);
 	void joyMenusChanged(QStringList menus);
 	void ncFuncMenusChanged(QStringList menus);
+	void rightMenusChanged(QStringList menus);
 
 private:
 	QColor _basecolor{ 55, 82, 120 };
@@ -70,4 +75,5 @@ private:
 	int _cncModeIndex{ 0 };
 	QStringList _joyMenus;
 	QStringList _ncFuncMenus;
+	QStringList _rightMenus;
 };

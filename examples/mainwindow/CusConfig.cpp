@@ -66,6 +66,17 @@ void CusConfig::ncFuncMenus(QStringList menus)
     emit ncFuncMenusChanged(menus);
 }
 
+QStringList CusConfig::rightMenus()
+{
+    return _rightMenus;
+}
+
+void CusConfig::rightMenus(QStringList menus)
+{
+    _rightMenus = menus;
+    emit rightMenusChanged(_rightMenus);
+}
+
 bool CusConfig::bLoadingPage()
 {
     return _bLoaingPage;
