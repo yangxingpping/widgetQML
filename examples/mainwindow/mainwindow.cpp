@@ -180,10 +180,16 @@ void MainWindow::displayJoyFunc(QPoint pt)
 {
 	QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
 	gconf->joyMenus(lst);
-	popFrame->resize(120, lst.size() * 20);
+	int mwidth = gconf->menuItemWidth();
+	int mheight = gconf->menuItemHeight();
+	popFrame->resize(mwidth, lst.size() * mheight);
 	popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
 	auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
-	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
+#ifdef Q_OS_WIN
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
+#else
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight);
+#endif
 	popFrame->show();
 }
 
