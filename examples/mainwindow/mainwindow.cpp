@@ -29,9 +29,11 @@
 #include <widgetframe/windowbar.h>
 #include <widgetframe/windowbutton.h>
 
-class ClockWidget : public QLabel {
+class ClockWidget : public QLabel 
+{
 public:
-	explicit ClockWidget(QWidget* parent = nullptr) : QLabel(parent) {
+	explicit ClockWidget(QWidget* parent = nullptr) : QLabel(parent) 
+	{
 		startTimer(100);
 		setAlignment(Qt::AlignCenter);
 	}
@@ -39,12 +41,14 @@ public:
 	~ClockWidget() override = default;
 
 protected:
-	void timerEvent(QTimerEvent* event) override {
+	void timerEvent(QTimerEvent* event) override 
+	{
 		setText(QTime::currentTime().toString(QStringLiteral("hh:mm:ss")));
 	}
 };
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) 
+{
 	installWindowAgent();
 	gconf = new CusConfig(this);
 	// use https://doc.qt.io/qt-6/qtquick-embeddedinwidgets-example.html replace later(performace)
@@ -188,7 +192,7 @@ void MainWindow::displayJoyFunc(QPoint pt)
 #ifdef Q_OS_WIN
 	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
 #else
-	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight);
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height() - windowAgent->titleBar()->height());
 #endif
 	popFrame->show();
 }
