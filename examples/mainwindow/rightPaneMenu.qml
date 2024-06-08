@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 Rectangle {
     id: root
+    color: "transparent"
     ZMenu{
         id: ncFuncMenu
         anchors.fill: parent

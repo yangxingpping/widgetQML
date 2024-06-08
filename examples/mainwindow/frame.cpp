@@ -6,6 +6,9 @@ Frame::Frame(QWidget *parent) : QFrame(parent), ui(new Ui::Frame) {
     ui->setupUi(this);
     ui->verticalLayout->setContentsMargins(0, 0, 0, 0);
     setWindowFlag(Qt::Popup);
+    //this->setWindowOpacity(0.5);
+    //setStyleSheet("background-color: transparent;");
+	//setAttribute(Qt::WA_TranslucentBackground); // No background
 }
 
 Frame::~Frame() {

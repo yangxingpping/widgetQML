@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 Rectangle {
     id: root
-    color: "yellow"
+    //color: "yellow"
     ZMenu{
         id: joyMenu
         anchors.fill: parent

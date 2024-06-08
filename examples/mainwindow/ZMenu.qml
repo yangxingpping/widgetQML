@@ -5,7 +5,7 @@ Rectangle {
     id: root
     anchors.fill: parent
     property var mod: null;
-    color: "blue"
+    color: "transparent" // "blue"
     border.width: 2
     border.color: "lightgray"
     signal clickItem(int index, string name);
@@ -19,7 +19,7 @@ Rectangle {
             id: del
             height: root.height / mod.length
             width: parent.width
-            color: gconf.popBkColor
+            color: "transparent" //gconf.popBkColor
             Rectangle{
                 id: rectHover
                 anchors.fill: parent

@@ -98,6 +98,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 		contentQuick->rootContext()->setContextProperty(qgconf, gconf);
 		contentQuick->setSource(source);
 		contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
+		contentQuick->setVisible(false);
 	}
 	rootLayout = new QGridLayout(root);
 	rootLayout->setContentsMargins(0, 0, 0, 0);
@@ -109,6 +110,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 
 	rootLayout->addWidget(topQuick, 0, 0, 1, 2);
 	rootLayout->addWidget(pedit, 1, 0, 1, 1);
+	rootLayout->addWidget(contentQuick, 1, 0, 1, 1);
 	rootLayout->addWidget(rightQuick, 1, 1, 1, 1);
 	rootLayout->addWidget(bottomQuick, 2, 0, 1, 2);
 
