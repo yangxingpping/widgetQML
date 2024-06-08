@@ -16,6 +16,9 @@ class CusConfig : public QObject {
 	Q_PROPERTY(int mainPageIndex READ mainPageIndex NOTIFY bLoadingPageChanged WRITE mainPageIndex);
 	Q_PROPERTY(int cncModeIndex READ cncModeIndex NOTIFY cncModeIndexChanged WRITE cncModeIndex);
 
+	Q_PROPERTY(int menuItemHeight READ menuItemHeight NOTIFY menuItemHeightChanged WRITE menuItemHeight);
+	Q_PROPERTY(int menuItemWidth READ menuItemWidth NOTIFY menuItemWidthChanged WRITE menuItemWidth);
+
 	Q_PROPERTY(QStringList joyMenus READ joyMenus NOTIFY joyMenusChanged WRITE joyMenus);
 	Q_PROPERTY(QStringList ncFuncMenus READ ncFuncMenus NOTIFY ncFuncMenusChanged WRITE ncFuncMenus);
 	Q_PROPERTY(QStringList rightMenus READ rightMenus NOTIFY rightMenusChanged WRITE rightMenus);
@@ -52,6 +55,11 @@ public:
 
 	int cncModeIndex();
 	void cncModeIndex(int index);
+
+	int menuItemWidth();
+	void menuItemWidth(int w);
+	int menuItemHeight();
+	void menuItemHeight(int h);
 signals:
 	void bkColorChanged(const QColor& c);
 	void hoverColorChanged(const QColor& c);
@@ -64,6 +72,8 @@ signals:
 	void ncFuncMenusChanged(QStringList menus);
 	void rightMenusChanged(QStringList menus);
 
+	void menuItemHeightChanged(int h);
+	void menuItemWidthChanged(int w);
 private:
 	QColor _basecolor{ 55, 82, 120 };
 	QColor _hoverColor{ 0, 255, 0 };
@@ -76,4 +86,6 @@ private:
 	QStringList _joyMenus;
 	QStringList _ncFuncMenus;
 	QStringList _rightMenus;
+	int _menuItemHeight{ 20 };
+	int _menuItemWidth{ 120 };
 };

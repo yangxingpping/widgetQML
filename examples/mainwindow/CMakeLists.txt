@@ -9,4 +9,4 @@ qwk_add_example(${PROJECT_NAME}
 )
 
 
-target_link_libraries(QWKExample_MainWindow PRIVATE KF6SyntaxHighlighting PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::Qml PRIVATE Qt${QT_VERSION_MAJOR}::QuickWidgets)
+target_link_libraries(QWKExample_MainWindow PRIVATE KF6SyntaxHighlighting PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::Qml PRIVATE magic_enum::magic_enum PRIVATE fmt::fmt-header-only PRIVATE Qt${QT_VERSION_MAJOR}::QuickWidgets)

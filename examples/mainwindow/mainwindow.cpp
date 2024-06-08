@@ -219,7 +219,6 @@ bool MainWindow::event(QEvent *event) {
             }
             break;
         }
-
         case QEvent::WindowDeactivate: {
             auto menu = menuWidget();
             if (menu) {

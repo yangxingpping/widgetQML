@@ -127,3 +127,25 @@ void CusConfig::cncModeIndex(int index)
     _cncModeIndex = index;
     emit cncModeIndexChanged(index);
 }
+
+int CusConfig::menuItemWidth()
+{
+    return _menuItemWidth;
+}
+
+void CusConfig::menuItemWidth(int w)
+{
+    _menuItemWidth = w;
+    emit menuItemWidthChanged(w);
+}
+
+int CusConfig::menuItemHeight()
+{
+    return _menuItemHeight;
+}
+
+void CusConfig::menuItemHeight(int h)
+{
+    _menuItemHeight = h;
+    emit menuItemHeightChanged(h);
+}
