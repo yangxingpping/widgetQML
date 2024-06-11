@@ -3,8 +3,12 @@
 
 #include "zmousepresspane.h"
 #include "ztopbar.h"
+#include "codeeditor.h"
+#include "CusConfig.h"
+#include "frame.h"
 #include <QMainWindow>
 #include <QGridLayout>
+#include <QQuickWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,6 +39,16 @@ private:
     Ui::MainWindow *ui;
 
     ZTopBar* _pTopBar{nullptr};
+	CodeEditor* pedit{ nullptr };
+	//QGridLayout* rootLayout{ nullptr };
+	QQuickWidget* contentQuick{ nullptr };
+	QQuickWidget* topQuick{ nullptr };
+	QQuickWidget* rightQuick{ nullptr };
+	QQuickWidget* bottomQuick{ nullptr };
+	CusConfig* gconf{ nullptr };
+	QString qgconf{ "gconf" };
+	QString qrootMain{ "rootMain" };
 
+	Frame* popFrame{ nullptr };
 };
 #endif // MAINWINDOW_H
