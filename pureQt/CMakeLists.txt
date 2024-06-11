@@ -9,14 +9,15 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Qml QuickWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Qml QuickWidgets)
 
 qt6_add_resources(Z_RESOURCES_TARGET demo.qrc)
 
 aux_source_directory(./ A)
 set(UIS
     mainwindow.ui
+    mainwindow.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -49,7 +50,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(pureQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(pureQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::Qml PRIVATE KF6SyntaxHighlighting PRIVATE magic_enum::magic_enum PRIVATE fmt::fmt-header-only PRIVATE Qt${QT_VERSION_MAJOR}::QuickWidgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

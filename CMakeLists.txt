@@ -19,7 +19,7 @@ option(QWINDOWKIT_ENABLE_QT_WINDOW_CONTEXT "Enable Qt Window Context anyway" OFF
 option(QWINDOWKIT_ENABLE_WINDOWS_SYSTEM_BORDERS "Enable system borders on Windows" ON)
 option(QWINDOWKIT_ENABLE_STYLE_AGENT "Enable building style agent" ON)
 
-include_directories(inc)
+include_directories(inc build/KSyntaxHighlighting build_win/KSyntaxHighlighting . ./KSyntaxHighlighting ./syntax-highlighting/src/lib ./build_win/syntax-highlighting/src/lib ./build/syntax-highlighting/src/lib) 
 
 #[[
 
