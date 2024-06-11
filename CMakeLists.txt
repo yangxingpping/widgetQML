@@ -120,6 +120,8 @@ qm_init_directories()
 add_subdirectory(src)
 add_subdirectory(syntax-highlighting)
 
+add_subdirectory(pureQt)
+
 if(QWINDOWKIT_BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()

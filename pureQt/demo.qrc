@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>res/minimize_top_icon.svg</file>
+        <file>res/amplification_top_icon2.svg</file>
+        <file>res/close_top_icon.svg</file>
+        <file>res/amplification_top_icon.svg</file>
+    </qresource>
+</RCC>

@@ -11,7 +11,12 @@ Rectangle {
     Connections{
         target: ncFuncMenu
         function onClickItem(index, name){
-            rootMain.uiClickNcFunc(index, name);
+            if(index===0){
+                rootMain.uiClickNcFunc(index, name);
+            }
+            else{
+                rootMain.uiDisplayUploadProgess();
+            }
         }
     }
     Component.onCompleted: function(){

@@ -204,6 +204,11 @@ void MainWindow::uiClickJoyFunc(int index, QString name)
 	popFrame->hide();
 }
 
+void MainWindow::uiDisplayUploadProgess()
+{
+
+}
+
 void MainWindow::uiGoProdHome()
 {
 	QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };

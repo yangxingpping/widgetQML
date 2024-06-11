@@ -40,6 +40,8 @@ public slots:
     void displayJoyFunc(QPoint pt);
     void uiClickJoyFunc(int index, QString name);
 
+    void uiDisplayUploadProgess();
+
     void uiGoProdHome();
     void uiDisplayRightMenuSub(int index, QPoint pt);
 
