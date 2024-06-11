@@ -125,16 +125,16 @@ Rectangle{
             rightMargin: r.width > 700 ? 68 : 10
             anchors.fill: parent
             orientation: ListView.Horizontal
-            model: mainModel
+            model: mainMenu
             delegate: RoundButton {
                 id: control
                 height: parent.height
                 ButtonGroup.group: groupMainButtons
-                width : (rowBottomBtns.width - rowBottomBtns.leftMargin - rowBottomBtns.rightMargin) / mainModel.count
+                width : (rowBottomBtns.width - rowBottomBtns.leftMargin - rowBottomBtns.rightMargin) / mainMenu.rowCount()
                 radius: 2
                 text: name
                 font.pixelSize: 10
-                icon.source: "%1/%2".arg(gconf.svgPath).arg(iconsource);
+                icon.source: "%1/%2".arg(gconf.svgPath).arg(iconUrl);
                 icon.color: "transparent"
                 icon.width: 34
                 icon.height: 34
@@ -160,7 +160,7 @@ Rectangle{
                     }
                     Image{
                         anchors.fill: parent
-                        source: "%1/%2".arg(gconf.svgPath).arg("BottomCheckedMenuStyle.svg")
+                        source: "%1/%2".arg(gconf.svgPath).arg(maskUrl)
                         visible: gconf.mainPageIndex === index
                     }
                 }

@@ -5,6 +5,8 @@
 #include "ztopbar.h"
 #include "codeeditor.h"
 #include "CusConfig.h"
+#include "ZTwoDimensionImpl.h"
+#include "ZButtonMdelInfo.h"
 #include "frame.h"
 #include <QMainWindow>
 #include <QGridLayout>
@@ -59,7 +61,11 @@ private:
 	CusConfig* gconf{ nullptr };
 	QString qgconf{ "gconf" };
 	QString qrootMain{ "rootMain" };
+	QString qmainMenu{ "mainMenu" };
 
 	Frame* popFrame{ nullptr };
+
+	ZTwoDimensionImpl<ZButtonMdelInfo>* mainMenus{ nullptr };
+	ZTwoDimensionImpl<ZButtonMdelInfo>* cncModes{ nullptr };
 };
 #endif // MAINWINDOW_H

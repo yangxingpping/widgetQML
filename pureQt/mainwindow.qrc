@@ -63,5 +63,8 @@
         <file>ZMenu.qml</file>
         <file>ncJoyMenu.qml</file>
         <file>rightPaneMenu.qml</file>
+        <file>ZButton.qml</file>
+        <file>ZColumnButton.qml</file>
+        <file>ZRowButton.qml</file>
     </qresource>
 </RCC>

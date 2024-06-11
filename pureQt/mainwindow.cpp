@@ -6,13 +6,31 @@
 #include <QWindow>
 #include <QLabel>
 #include <QFrame>
+#include <memory>
 #include <QPushButton>
+
+using std::make_unique;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+	mainMenus = new ZTwoDimensionImpl<ZButtonMdelInfo>({}, this);
+
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Prod", "Prod.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Prog", "Prog.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Tool", "Tool.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Work", "Work.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Variable", "Variable.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Diag", "Diag.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Service", "Service.svg", "BottomCheckedMenuStyle.svg"));
+	mainMenus->_data.push_back(make_unique<ZButtonMdelInfo>("Extend", "Extend.svg", "BottomCheckedMenuStyle.svg"));
+
+
+	cncModes = new ZTwoDimensionImpl<ZButtonMdelInfo>({}, this);
+
     _pTopBar = new ZTopBar(this);
     _pTopBar->setStyleSheet("QFrame { background-color : rgba(55,82,120, 0.2) }");
 	auto root = new QWidget(this);
@@ -77,6 +95,7 @@ MainWindow::MainWindow(QWidget *parent)
 		bottomQuick = new QQuickWidget(this);
 		bottomQuick->rootContext()->setContextProperty(qgconf, gconf);
 		bottomQuick->rootContext()->setContextProperty(qrootMain, this);
+		bottomQuick->rootContext()->setContextProperty(qmainMenu, mainMenus);
 		QUrl source1("qrc:/bottomQuick.qml");
 		bottomQuick->setSource(source1);
 		bottomQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
