@@ -110,6 +110,7 @@ MainWindow::MainWindow(QWidget *parent)
 	rootLayout->addWidget(contentQuick, 2, 0, 1, 1);
 	rootLayout->addWidget(rightQuick, 2, 1, 1, 1);
 	rootLayout->addWidget(bottomQuick, 3, 0, 1, 2);
+	rootLayout->setSpacing(1);
     //end content
 	this->resize(1024, 768);
 
@@ -150,11 +151,6 @@ void MainWindow::displayJoyFunc(QPoint pt)
 
 	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
 
-//#ifdef Q_OS_WIN
-//	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
-//#else
-//	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height() - windowAgent->titleBar()->height());
-//#endif
 	popFrame->show();
 }
 
