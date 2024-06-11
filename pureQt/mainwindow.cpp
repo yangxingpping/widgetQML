@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 	setCentralWidget(root);
 	{
 		topQuick = new QQuickWidget(this);
+		topQuick->setContentsMargins(0, 0, 0, 0);
 		topQuick->rootContext()->setContextProperty(qgconf, gconf);
 		QUrl source1("qrc:/topQuick.qml");
 		topQuick->setSource(source1);
@@ -146,11 +147,14 @@ void MainWindow::displayJoyFunc(QPoint pt)
 	popFrame->resize(mwidth, lst.size() * mheight);
 	popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
 	auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
-#ifdef Q_OS_WIN
+
 	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
-#else
-	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height() - windowAgent->titleBar()->height());
-#endif
+
+//#ifdef Q_OS_WIN
+//	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
+//#else
+//	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height() - windowAgent->titleBar()->height());
+//#endif
 	popFrame->show();
 }
 
