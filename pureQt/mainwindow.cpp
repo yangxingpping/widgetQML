@@ -100,8 +100,8 @@ MainWindow::MainWindow(QWidget *parent)
 	rootLayout->setRowStretch(1, 0);
 	rootLayout->setRowStretch(2, 1);
 	rootLayout->setRowStretch(3, 0);
-	rootLayout->setColumnStretch(1, 1);
-	rootLayout->setColumnStretch(2, 0);
+	rootLayout->setColumnStretch(0, 1);
+	rootLayout->setColumnStretch(1, 0);
 
 	rootLayout->addWidget(_pTopBar, 0, 0, 1, 2);
 
