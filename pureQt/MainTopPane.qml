@@ -15,7 +15,7 @@ Rectangle {
         width: parent.width * 0.874
         height: parent.height
         Component.onCompleted: {
-            console.debug("main top left width %1, heigth %2".arg(width).arg(height));
+            
         }
         Shape {
             ShapePath {
@@ -60,9 +60,7 @@ Rectangle {
         }
     }
     onWidthChanged: {
-        console.log("main top pane width changed");
         var curpath = "L %1 0 L %1 62 L 0 62 z"
-        console.log(curpath.arg(rootBackground.width))
 
         mainTopLeftPane.width = rootBackground.width * 0.874
         curpath = "L %1 0 L %2 %3 L 0 %3 z"

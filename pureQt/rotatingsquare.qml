@@ -8,14 +8,12 @@ Item {
     
     Component.onCompleted:{
         
-        console.log("width:%1 height:%2".arg(width).arg(height))
         
     }
     width: 600
     Connections{
         target: abc
         function onSig1(v){
-            console.log("pass para=%1".arg(v));
             root.width = v * 5;
         }
     }

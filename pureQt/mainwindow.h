@@ -9,6 +9,7 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QQuickWidget>
+#include <QQmlContext>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
