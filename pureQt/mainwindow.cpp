@@ -113,13 +113,74 @@ MainWindow::MainWindow(QWidget *parent)
 	this->resize(1024, 768);
 
     _pTopBar->updateRunState("Running", QColor{ 0,255,255 }, QColor{ 255,0,0 });
-
+	uiGoProdHome();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::displayNCFunc(QPoint pt)
+{
+	QStringList lst{ "M01", "跳段", "设置程序段跳过级别" };
+	gconf->ncFuncMenus(lst);
+	popFrame->resize(120, lst.size() * 20);
+	popFrame->setSource(QUrl("qrc:/ncFuncMenu.qml"));
+	auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * 20 + bottomQuick->geometry().height());
+	popFrame->show();
+}
+
+void MainWindow::uiClickNcFunc(int index, QString name)
+{
+	popFrame->hide();
+}
+
+void MainWindow::displayJoyFunc(QPoint pt)
+{
+	QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+	gconf->joyMenus(lst);
+	int mwidth = gconf->menuItemWidth();
+	int mheight = gconf->menuItemHeight();
+	popFrame->resize(mwidth, lst.size() * mheight);
+	popFrame->setSource(QUrl("qrc:/ncJoyMenu.qml"));
+	auto rPos = mapToGlobal(bottomQuick->geometry().topLeft());
+#ifdef Q_OS_WIN
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height());
+#else
+	popFrame->move(rPos.x() + pt.x(), rPos.y() - lst.size() * mheight + bottomQuick->geometry().height() - windowAgent->titleBar()->height());
+#endif
+	popFrame->show();
+}
+
+void MainWindow::uiClickJoyFunc(int index, QString name)
+{
+	popFrame->hide();
+}
+
+void MainWindow::uiDisplayUploadProgess()
+{
+
+}
+
+void MainWindow::uiGoProdHome()
+{
+	QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+	gconf->rightMenus(lst);
+}
+
+void MainWindow::uiDisplayRightMenuSub(int index, QPoint pt)
+{
+	QStringList lst{ "手轮", "连续给进", "0.001u", "0.01u", "0.1u", "1u", "10u", "100u", "1mm", "10mm" };
+	gconf->ncFuncMenus(lst);
+	popFrame->resize(120, lst.size() * 20);
+	popFrame->setSource(QUrl("qrc:/rightPaneMenu.qml"));
+	auto rPos = mapToGlobal(rightQuick->geometry().topLeft());
+	popFrame->move(rPos.x() - 120, rPos.y() + pt.y());// +topQuick->geometry().height());
+	popFrame->show();
+}
+
 
 void	MainWindow::mousePressEvent(QMouseEvent *e)
 {

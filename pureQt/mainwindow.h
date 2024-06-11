@@ -36,6 +36,16 @@ protected:
 
 public slots:
     void onStartSystemMove();
+	void displayNCFunc(QPoint pt);
+	void uiClickNcFunc(int index, QString name);
+
+	void displayJoyFunc(QPoint pt);
+	void uiClickJoyFunc(int index, QString name);
+
+	void uiDisplayUploadProgess();
+
+	void uiGoProdHome();
+	void uiDisplayRightMenuSub(int index, QPoint pt);
 private:
     Ui::MainWindow *ui;
 
