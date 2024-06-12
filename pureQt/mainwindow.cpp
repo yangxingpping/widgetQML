@@ -104,7 +104,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	contentQuick = new QQuickWidget(this);
 	pedit = new CodeEditor(this);
-	pedit->setVisible(true);
+	pedit->setVisible(false);
 	contentQuick->rootContext()->setContextProperty("abc", pedit);
 
 	{
@@ -112,7 +112,7 @@ MainWindow::MainWindow(QWidget *parent)
 		contentQuick->rootContext()->setContextProperty(qgconf, gconf);
 		contentQuick->setSource(source);
 		contentQuick->setResizeMode(QQuickWidget::SizeRootObjectToView);
-		contentQuick->setVisible(false);
+		contentQuick->setVisible(true);
 	}
 
 	rootLayout->setRowStretch(0, 0);

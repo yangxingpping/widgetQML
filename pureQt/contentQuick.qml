@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 import QtQuick
+import pureQt 1.0
 
 Item {
     id: root
@@ -15,6 +16,15 @@ Item {
         function onSig1(v){
             root.width = v * 5;
         }
+    }
+
+    ZRectangle{
+        x:0
+        y:0
+        width: 10
+        height: 20
+        color: "yellow"
+        
     }
     
     Text {

@@ -20,6 +20,9 @@ set(UIS
     mainwindow.qrc
 )
 
+set(QML_IMPORT_NAME "pureQt")
+set(QML_IMPORT_VERSION 1.0)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(pureQt
         MANUAL_FINALIZATION
