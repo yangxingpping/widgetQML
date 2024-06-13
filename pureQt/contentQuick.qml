@@ -2,8 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 import QtQuick
-import pureQt 1.0
-
+import pureQt
 Item {
     id: root
     
@@ -21,10 +20,10 @@ Item {
     ZRectangle{
         x:0
         y:0
-        width: 10
-        height: 20
+        width: 200
+        height: 400
         color: "yellow"
-        
+        radius: [5,10,15,20]
     }
     
     Text {

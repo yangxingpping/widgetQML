@@ -12,6 +12,7 @@
 #include <QGridLayout>
 #include <QQuickWidget>
 #include <QQmlContext>
+#include <QQmlEngine>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,7 +25,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QQmlEngine* e, QWidget *parent = nullptr);
     ~MainWindow();
 
     QGridLayout *rootLayout{nullptr};
@@ -67,5 +68,7 @@ private:
 
 	ZTwoDimensionImpl<ZButtonMdelInfo>* mainMenus{ nullptr };
 	ZTwoDimensionImpl<ZButtonMdelInfo>* cncModes{ nullptr };
+
+	QQmlEngine* engine{ nullptr };
 };
 #endif // MAINWINDOW_H

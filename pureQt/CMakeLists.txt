@@ -20,9 +20,6 @@ set(UIS
     mainwindow.qrc
 )
 
-set(QML_IMPORT_NAME "pureQt")
-set(QML_IMPORT_VERSION 1.0)
-
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(pureQt
         MANUAL_FINALIZATION
@@ -52,6 +49,13 @@ else()
         )
     endif()
 endif()
+
+qt_add_qml_module(pureQt
+    URI pureQt
+    VERSION 1.0
+    #QML_FILES Main.qml
+    SOURCES ZRectangle.cpp ZRectangle.h
+)
 
 target_link_libraries(pureQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets PRIVATE Qt${QT_VERSION_MAJOR}::Qml PRIVATE KF6SyntaxHighlighting PRIVATE magic_enum::magic_enum PRIVATE fmt::fmt-header-only PRIVATE Qt${QT_VERSION_MAJOR}::QuickWidgets)
 

@@ -11,11 +11,14 @@
 
 using std::make_unique;
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QQmlEngine* e,  QWidget *parent)
     : QMainWindow(parent)
+	, engine(e)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+	
 
 	mainMenus = new ZTwoDimensionImpl<ZButtonMdelInfo>({}, this);
 
@@ -102,7 +105,7 @@ MainWindow::MainWindow(QWidget *parent)
 		bottomQuick->setMinimumHeight(62);
 	}
 
-	contentQuick = new QQuickWidget(this);
+	contentQuick = new QQuickWidget(engine, this);
 	pedit = new CodeEditor(this);
 	pedit->setVisible(false);
 	contentQuick->rootContext()->setContextProperty("abc", pedit);

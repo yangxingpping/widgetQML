@@ -23,7 +23,7 @@ class CusConfig : public QObject {
 	Q_PROPERTY(QStringList ncFuncMenus READ ncFuncMenus NOTIFY ncFuncMenusChanged WRITE ncFuncMenus);
 	Q_PROPERTY(QStringList rightMenus READ rightMenus NOTIFY rightMenusChanged WRITE rightMenus);
 public:
-	CusConfig(QObject* parent);
+	CusConfig(QObject* parent=nullptr);
 	virtual ~CusConfig();
 
 	QColor bkColor();

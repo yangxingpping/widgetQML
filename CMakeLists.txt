@@ -117,7 +117,7 @@ qm_init_directories()
 # ----------------------------------
 # Add source modules
 # ----------------------------------
-add_subdirectory(src)
+#add_subdirectory(src)
 add_subdirectory(syntax-highlighting)
 
 add_subdirectory(pureQt)
